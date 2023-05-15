@@ -27,4 +27,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //     'show'
 // ]);
 
-Route::get('/admin', [App\Http\Controllers\DummyController::class, 'index']);
+Route::get('/admin/kelolaGuru', [App\Http\Controllers\GuruController::class]);
