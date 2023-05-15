@@ -26,33 +26,17 @@
 
             <li class="nav-item py-2">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-home" style="color:#464255"></i>
+                <i class="nav-icon fas fa-chalkboard-teacher" style="color:#464255"></i>
                 <p class="text-gray-500 ">
-                  Dashboard
+                  Guru
                 </p>
               </a>
             </li>
             <li class="nav-item py-2">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-book" style="color:#464255"></i>
+                <i class="nav-icon fas fa-book-reader" style="color:#464255"></i>
                 <p class="text-gray-500">
-                  Materi
-                </p>
-              </a>
-            </li>
-            <li class="nav-item py-2">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-gamepad" style="color:#464255"></i>
-                <p class="text-gray-500">
-                  Game
-                </p>
-              </a>
-            </li>
-            <li class="nav-item py-2">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-file" style="color:#464255"></i>
-                <p class="text-gray-500">
-                  Kuis
+                  Siswa
                 </p>
               </a>
             </li>

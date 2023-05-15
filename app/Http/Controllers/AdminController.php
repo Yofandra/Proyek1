@@ -46,7 +46,7 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        //
+        return view('admin.layoutAdmin');
     }
 
     /**

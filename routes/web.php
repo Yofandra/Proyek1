@@ -21,4 +21,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/siswa', [App\Http\Controllers\SiswaController::class]);
+// Route::resource('/siswa', [App\Http\Controllers\SiswaController::class]);
+
+// Route::resource('admin', [App\Http\Controllers\AdminController::class])->only([
+//     'show'
+// ]);
+
+Route::get('/admin', [App\Http\Controllers\DummyController::class, 'index']);
