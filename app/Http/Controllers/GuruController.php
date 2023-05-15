@@ -10,24 +10,22 @@ class GuruController extends Controller
 
     public function index()
     {
-        return view('guru.layoutGuru');
         $guru = Guru::all();
-        $posts = Guru::orderBy('idGuru', 'desc')->paginate(6);
-        return view('guru.index', compact('guru'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $posts = Guru::orderBy('nip', 'desc')->paginate(6);
+        return view('admin.indexGuru', compact('guru'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
-        return view('guru.create');
+        return view('admin.createGuru');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'idGuru' => 'required',
+            'nip' => 'required',
             'nama_guru' => 'required',
             'kelas' => 'required',
-            'nip' => 'required',
             'username' => 'required',
             'password' => 'required',
             ]);
@@ -37,37 +35,36 @@ class GuruController extends Controller
             return redirect()->route('guru.index') -> with('success', 'Data Guru Berhasil Ditambahkan');
     }
 
-    public function show($idGuru)
+    public function show($nip)
     {
-        $Guru = Guru::find($idGuru);
-        return view('guru.detail', compact('Guru'));
+        $Guru = Guru::find($nip);
+        return view('guru.detailGuru', compact('Guru'));
     }
 
-    public function edit($idGuru)
+    public function edit($nip)
     {
-        $Guru = Guru::find($idGuru);
-        return view('guru.edit', compact('Guru'));
+        $Guru = Guru::find($nip);
+        return view('guru.editGuru', compact('Guru'));
     }
 
-    public function update(Request $request, $idGuru)
+    public function update(Request $request, $nip)
     {
         $request->validate([
-            'idGuru' => 'required',
+            'nip' => 'required',
             'nama_guru' => 'required',
             'kelas' => 'required',
-            'nip' => 'required',
             'username' => 'required',
             'password' => 'required',
             ]);
            
-            Guru::find($idGuru)->update($request->all());
+            Guru::find($nip)->update($request->all());
            
-            return redirect()->route('guru.index') -> with('success', 'Data Guru Berhasil Diupdate');
+            return redirect()->route('guru.indexGuru') -> with('success', 'Data Guru Berhasil Diupdate');
     }
 
-    public function destroy($idGuru)
+    public function destroy($nip)
     {
-        Guru::find($idGuru)->delete();
+        Guru::find($nip)->delete();
         return redirect()->route('guru.index') -> with('success', 'Data Guru Berhasil Dihapus');
     }
 }

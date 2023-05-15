@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GuruController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //     'show'
 // ]);
 
-Route::get('/admin/kelolaGuru', [App\Http\Controllers\GuruController::class]);
+Route::get('/admin', [App\Http\Controllers\DummyController::class, 'index']);
+
+Route::resource('/guru', GuruController::class);

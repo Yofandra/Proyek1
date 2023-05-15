@@ -5,17 +5,16 @@ namespace App\Models;
     use Illuminate\Foundation\Auth\Guru as Authenticatable;
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Database\Eloquent\Model;
-class Mahasiswa extends Model
+class Guru extends Model
 {
     protected $table = "guru";
     public $timestamps = false;
-    protected $primaryKey = 'idGuru';
+    protected $primaryKey = 'nip';
 
     protected $fillable = [
-        'idGuru',
+        'nip',
         'nama_guru',
         'kelas',
-        'nip',
         'username',
         'password',
  ];

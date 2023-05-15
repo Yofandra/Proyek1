@@ -62,7 +62,6 @@
       <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
-    @include('admin.footer')
   </div>
   <!-- ./wrapper -->
 
