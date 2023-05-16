@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 
+
 class SiswaController extends Controller
 {
     /**
@@ -14,7 +15,10 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        return view('siswa.layoutSiswa');
+        $siswa = Siswa::all();
+        $posts = Siswa::orderBy('idSiswa', 'asc')->paginate(6);
+        return view('siswa.index', compact('siswa'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -24,7 +28,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('siswa.create');
     }
 
     /**
@@ -35,7 +39,20 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'idSiswa' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'nama' => 'required',
+            'kelas' => 'required',
+            'nis' => 'required',
+            'no_absen' => 'required',
+            ]);
+
+            Siswa::create($request->all());
+
+            return redirect()->route('siswa.index')
+            ->with('success', 'Siswa Berhasil Ditambahkan');
     }
 
     /**
@@ -44,9 +61,10 @@ class SiswaController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show($idSiswa)
     {
-        //
+        $Siswa = Siswa::find($idSiswa);
+        return view('siswa.detail', compact('Siswa'));
     }
 
     /**
@@ -55,9 +73,10 @@ class SiswaController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit($idSiswa)
     {
-        //
+        $Siswa = Siswa::find($idSiswa);
+        return view('siswa.edit', compact('Siswa'));
     }
 
     /**
@@ -67,9 +86,21 @@ class SiswaController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, $idSiswa)
     {
-        //
+        $request->validate([
+            'nis' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'nama' => 'required',
+            'kelas' => 'required',
+            'no_absen' => 'required',
+            ]);
+
+        Siswa::find($idSiswa)->update($request->all());
+
+        return redirect()->route('siswa.index')
+        ->with('success', 'Siswa Berhasil Diupdate');
     }
 
     /**
@@ -78,8 +109,10 @@ class SiswaController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy($idSiswa)
     {
-        //
+        Siswa::find($idSiswa)->delete();
+        return redirect()->route('siswa.index')
+        -> with('success', 'Siswa Berhasil Dihapus');
     }
 }
