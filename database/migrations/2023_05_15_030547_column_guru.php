@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('guru', function (Blueprint $table) {
             $table->integer('nip') -> primary();
             $table->string('nama_guru', 30);
-            $table->string('kelas');
+            $table->string('foto');
             $table->string('username', 30);
             $table->string('password', 20);
             $table->timestamps();

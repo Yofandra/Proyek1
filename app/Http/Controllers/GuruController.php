@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GuruController extends Controller
 {
@@ -22,29 +23,39 @@ class GuruController extends Controller
 
     public function store(Request $request)
     {
+        if($request->file('image')){
+            $image_name = $request->file('image')->store('image', 'public');
+        }
         $request->validate([
             'nip' => 'required',
             'nama_guru' => 'required',
-            'kelas' => 'required',
+            'image' => 'required',
             'username' => 'required',
             'password' => 'required',
             ]);
-            
-            Guru::create($request->all());
-            
-            return redirect()->route('guru.index') -> with('success', 'Data Guru Berhasil Ditambahkan');
+            // Guru::create($request->all());
+            $guru = new Guru;
+            $guru->nip = $request->get('nip');
+            $guru->nama_guru = $request->get('nama_guru');
+            $guru->foto =$image_name;
+            $guru->username = $request->get('username');
+            $guru->password = $request->get('password');
+
+            $guru->save();
+            return redirect()->route('guru.index') 
+            -> with('success', 'Data Guru Berhasil Ditambahkan');
     }
 
     public function show($nip)
     {
         $Guru = Guru::find($nip);
-        return view('guru.detailGuru', compact('Guru'));
+        return view('admin.detailGuru', compact('Guru'));
     }
 
     public function edit($nip)
     {
         $Guru = Guru::find($nip);
-        return view('guru.editGuru', compact('Guru'));
+        return view('admin.editGuru', compact('Guru'));
     }
 
     public function update(Request $request, $nip)
@@ -52,14 +63,25 @@ class GuruController extends Controller
         $request->validate([
             'nip' => 'required',
             'nama_guru' => 'required',
-            'kelas' => 'required',
+            'image' => 'required',
             'username' => 'required',
             'password' => 'required',
             ]);
-           
-            Guru::find($nip)->update($request->all());
-           
-            return redirect()->route('guru.indexGuru') -> with('success', 'Data Guru Berhasil Diupdate');
+            
+            $guru = Guru::where('nip', $nip)->first();
+            $guru->nip = $request->get('nip');
+            $guru->nama_guru = $request->get('nama_guru');
+            if($guru->foto && file_exists(storage_path('app/public/' . $guru->foto))) {
+                Storage::delete('public/' . $guru->foto);
+            }
+            $image_name = $request->file('image')->store('image', 'public');
+            $guru->foto = $image_name;
+            $guru->username = $request->get('username');
+            $guru->password = $request->get('password');
+            $guru->save();
+
+            return redirect()->route('guru.index') 
+                ->with('success', 'Data Guru Berhasil Diupdate');
     }
 
     public function destroy($nip)
