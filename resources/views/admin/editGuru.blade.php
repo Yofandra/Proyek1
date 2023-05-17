@@ -1,4 +1,5 @@
 @extends('admin.layoutAdmin')
+
 @section('content')
 
     <div class="flex flex-col items-center pb-10">
