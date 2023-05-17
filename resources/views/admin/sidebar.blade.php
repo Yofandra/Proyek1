@@ -25,7 +25,7 @@
                with font-awesome or any other icon font library -->
 
             <li class="nav-item py-2">
-              <a href="#" class="nav-link">
+              <a href="{{ route('guru.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-chalkboard-teacher" style="color:#464255"></i>
                 <p class="text-gray-500 ">
                   Guru

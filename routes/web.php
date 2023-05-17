@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SiswaController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\GuruController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +30,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/admin', [App\Http\Controllers\DummyController::class, 'index']);
 
-Route::resource('siswa', SiswaController::class);
+Route::resource('/guru', GuruController::class);

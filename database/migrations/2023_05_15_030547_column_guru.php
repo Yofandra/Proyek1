@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('siswa', function (Blueprint $table) {
-            $table->integer('nis')->primary();
+        Schema::create('guru', function (Blueprint $table) {
+            $table->integer('nip') -> primary();
+            $table->string('nama_guru', 30);
+            $table->string('kelas');
             $table->string('username', 30);
             $table->string('password', 20);
-            $table->string('nama', 30);
-            $table->string('kelas');
-            $table->integer('no_absen');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('siswa');
+        Schema::dropIfExists('guru');
     }
 };

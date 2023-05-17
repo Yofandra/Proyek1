@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('siswa', function (Blueprint $table) {
-            $table->integer('nis')->primary();
-            $table->string('username', 30);
-            $table->string('password', 20);
-            $table->string('nama', 30);
-            $table->string('kelas');
-            $table->integer('no_absen');
+        Schema::create('kelas', function (Blueprint $table) {
+            $table->integer('idKelas') -> primary();
+            $table->string('nama_kelas', 30);
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('siswa');
+        Schema::dropIfExists('kelas');
     }
 };

@@ -51,7 +51,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <div class="container-fluid">
-        
+        @yield('content')
       </div>
       
     </div>
@@ -62,7 +62,6 @@
       <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
-    @include('admin.footer')
   </div>
   <!-- ./wrapper -->
 
