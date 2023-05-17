@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       colors: {
         'green-logo': '#169F1A',
+        'ijo': '#00B074',
       }
     },
   },
