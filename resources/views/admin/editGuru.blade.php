@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image">Foto</label>
-                        <input type="text" name="image" id="image" value="{{$guru->foto}}" aria-describedby="kelas" class="formcontrol bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
+                        <input type="text" name="image" id="image" value="{{$guru->foto}}" aria-describedby="foto" class="formcontrol bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
                         <img width="100px" src="{{asset('storage/'.$guru->foto)}}">
                     </div>
                     <div class="form-group">
