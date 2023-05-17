@@ -10,8 +10,8 @@
         <div class="card-body">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><b>NIP: </b>{{$Guru->nip}}</li>
-                <li class="list-group-item"><b>Nama: </b>{{$Guru->nama}}</li>
-                <li class="list-group-item"><b>Kelas: </b>{{$Guru->kelas}}</li>
+                <li class="list-group-item"><b>Nama: </b>{{$Guru->nama_guru}}</li>
+                <li class="list-group-item"><b>Foto: </b><img width="100px" height="100px" src="{{asset('storage/'.$Guru->foto)}}"></li>
                 <li class="list-group-item"><b>Username: </b>{{$Guru->username}}</li>
                 <li class="list-group-item"><b>Password: </b>{{$Guru->password}}</li>
             </ul>
