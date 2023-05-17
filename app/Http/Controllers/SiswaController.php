@@ -14,10 +14,10 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        return view('siswa.layoutSiswa');
-        $siswa = Mahasiswa::all(); // Mengambil semua isi tabel
-        $posts = Mahasiswa::orderBy('Nim', 'desc')-> paginate(6);
-        return view('mahasiswas.index', compact('mahasiswas')) -> with('i', (request() -> input('page', 1) - 1) * 5);
+        return view('siswa.dashboard');
+        // $siswa = Siswa::all(); // Mengambil semua isi tabel
+        // $posts = Siswa::orderBy('Nim', 'desc')-> paginate(6);
+        // return view('mahasiswas.index', compact('mahasiswas')) -> with('i', (request() -> input('page', 1) - 1) * 5);
     }
 
     /**
@@ -84,5 +84,8 @@ class SiswaController extends Controller
     public function destroy(Admin $admin)
     {
         //
+    }
+    public function kuis(){
+        return view('siswa.kuis');
     }
 }
