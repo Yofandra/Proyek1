@@ -35,6 +35,7 @@ Route::get('/admin', [App\Http\Controllers\DummyController::class, 'index']);
 
 Route::resource('/guru', GuruController::class);
 
+Route::resource('/siswa', SiswaController::class);
 Route::resource('/kelas', KelasController::class);
 // Route::get('siswa/kuis', [App\Http\Controllers\SiswaController::class, 'kuis']);
 // Route::resource('/siswa', SiswaController::class);
