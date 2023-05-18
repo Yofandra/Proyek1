@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('siswa', function (Blueprint $table) {
-            $table->integer('nis')->primary();
-            $table->string('nama', 30);
-            $table->string('username', 30);
-            $table->string('password',25);
-            $table->integer('kelas');
-            $table->integer('no_absen');
-            $table->timestamps();
-        });
+    Schema::table('siswa', function (Blueprint $table) {
+        $table->string('foto')->after('nama');
+    });
     }
 
     /**

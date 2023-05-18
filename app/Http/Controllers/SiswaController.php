@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
-
+use App\Models\Siswa;
 
 class SiswaController extends Controller
 {
@@ -13,12 +13,20 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $siswa = Siswa::all();
-        $posts = Siswa::orderBy('idSiswa', 'asc')->paginate(6);
-        return view('siswa.index', compact('siswa'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+        if($request->has('search')){
+            $siswa = Siswa::where('nis', 'LIKE', '%' . request('search') . '%')
+                ->orWhere('nama', 'LIKE', '%' . request('search') . '%')
+                ->orWhere('kelas', 'LIKE', '%' . request('search') . '%')
+                ->orWhere('no_absen', 'LIKE', '%' . request('search') . '%')
+                ->paginate(5);
+    
+            return view('admin.index_siswa', ['siswa' => $siswa]);
+        }else{
+            $siswa = Siswa::orderBy('nis', 'desc')->paginate(5);
+            return view('admin.index_siswa', compact('siswa'))->with('i', (request()->input('page', 1) - 1) * 5);
+        }
     }
 
     /**
@@ -28,7 +36,7 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('siswa.create');
+        return view('admin.create_siswa');
     }
 
     /**
@@ -39,18 +47,32 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
+            if($request->file('foto')){
+                $image_name = $request->file('foto')->store('image', 'public');
+            }
+
         $request->validate([
-            'idSiswa' => 'required',
+            'nis' => 'required',
+            'nama' => 'required',
+            'foto' => 'required',
             'username' => 'required',
             'password' => 'required',
-            'nama' => 'required',
             'kelas' => 'required',
-            'nis' => 'required',
             'no_absen' => 'required',
             ]);
 
-            Siswa::create($request->all());
+            // Siswa::create($request->all());
 
+            $siswa = new Siswa;
+            $siswa->nis = $request->get('nis');
+            $siswa->nama = $request->get('nama');
+            $siswa->foto =$image_name;
+            $siswa->username = $request->get('username');
+            $siswa->password = $request->get('password');
+            $siswa->kelas = $request->get('kelas');
+            $siswa->no_absen = $request->get('no_absen');
+
+            $siswa->save();
             return redirect()->route('siswa.index')
             ->with('success', 'Siswa Berhasil Ditambahkan');
     }
@@ -61,9 +83,9 @@ class SiswaController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show($idSiswa)
+    public function show($nis)
     {
-        $Siswa = Siswa::find($idSiswa);
+        $Siswa = Siswa::find($nis);
         return view('siswa.detail', compact('Siswa'));
     }
 
@@ -73,9 +95,9 @@ class SiswaController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit($idSiswa)
+    public function edit($nis)
     {
-        $Siswa = Siswa::find($idSiswa);
+        $Siswa = Siswa::find($nis);
         return view('siswa.edit', compact('Siswa'));
     }
 
@@ -86,18 +108,18 @@ class SiswaController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $idSiswa)
+    public function update(Request $request, $nis)
     {
         $request->validate([
             'nis' => 'required',
             'username' => 'required',
             'password' => 'required',
-            'nama' => 'required',
+            'nama_siswa' => 'required',
             'kelas' => 'required',
             'no_absen' => 'required',
             ]);
 
-        Siswa::find($idSiswa)->update($request->all());
+        Siswa::find($nis)->update($request->all());
 
         return redirect()->route('siswa.index')
         ->with('success', 'Siswa Berhasil Diupdate');
@@ -109,9 +131,9 @@ class SiswaController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy($idSiswa)
+    public function destroy($nis)
     {
-        Siswa::find($idSiswa)->delete();
+        Siswa::find($nis)->delete();
         return redirect()->route('siswa.index')
         -> with('success', 'Siswa Berhasil Dihapus');
     }

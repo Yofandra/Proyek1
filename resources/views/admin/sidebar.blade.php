@@ -22,7 +22,7 @@
         <nav class="sidebar px-0 ">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+              with font-awesome or any other icon font library -->
 
             <li class="nav-item py-2">
               <a href="{{ route('guru.index')}}" class="nav-link">
@@ -33,7 +33,7 @@
               </a>
             </li>
             <li class="nav-item py-2">
-              <a href="#" class="nav-link">
+              <a href="/siswa" class="nav-link">
                 <i class="nav-icon fas fa-book-reader" style="color:#464255"></i>
                 <p class="text-gray-500">
                   Siswa
