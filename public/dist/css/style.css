@@ -1,0 +1,33 @@
+.dashboard {
+  padding: 20px 30px;
+}
+.pagetitle {
+  margin-bottom: 10px;
+}
+
+.pagetitle h1 {
+    font-size: 48px;
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #00B074;
+}
+
+input[type="radio"] + label span {
+    transition: background .2s,
+      transform .2s;
+}
+
+input[type="radio"] + label span:hover,
+input[type="radio"] + label:hover span{
+  transform: scale(1.2);
+} 
+
+input[type="radio"]:checked + label span {
+  background-color: #3490DC; 
+  box-shadow: 0px 0px 0px 2px white inset;
+}
+
+input[type="radio"]:checked + label{
+   color: #3490DC; 
+}
+

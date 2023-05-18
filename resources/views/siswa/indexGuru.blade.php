@@ -18,6 +18,37 @@
         </div>
     @endif
 
+    {{-- <table class="table table-bordered">
+        <tr>
+            <th>NIP</th>
+            <th>Username</th>
+            <th>Nama</th>
+            <th>Kelas</th>
+            <th>Password</th>
+            <th width="300px">Action</th>
+        </tr>
+        @foreach ($guru as $Guru)
+        <tr>
+
+        <td>{{ $Guru->nip }}</td>
+        <td>{{ $Guru->username }}</td>
+        <td>{{ $Guru->nama_guru }}</td>
+        <td>{{ $Guru->kelas }}</td>
+        <td>{{ $Guru->password }}</td>
+        <td>
+        <form action="{{ route('guru.destroy',$Guru->idGuru) }}" method="POST">
+
+            <a class="btn btn-info" href="{{ route('guru.show',$Guru->idGuru) }}">Show</a>
+            <a class="btn btn-primary" href="{{ route('guru.edit',$Guru->idGuru) }}">Edit</a>
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        </td>
+        </tr>
+    @endforeach
+    </table> --}}
+    
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -29,7 +60,7 @@
                     Nama
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Foto <img width="100px">
+                    Kelas
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Username
@@ -52,7 +83,7 @@
                     {{ $Guru->nama_guru}}
                 </td>
                 <td class="px-6 py-4">
-                    <img width="100px" height="100px" src="{{asset('storage/'.$Guru->foto)}}" 
+                    {{ $Guru->kelas}}
                 </td>
                 <td class="px-6 py-4">
                     {{ $Guru->username}}
