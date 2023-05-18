@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 
@@ -114,5 +115,8 @@ class SiswaController extends Controller
         Siswa::find($idSiswa)->delete();
         return redirect()->route('siswa.index')
         -> with('success', 'Siswa Berhasil Dihapus');
+    }
+    public function kuis(){
+        return view('siswa.kuis');
     }
 }

@@ -1,5 +1,7 @@
 <?php
 namespace App\Models;
+
+use App\Models\Kelas;
     use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Foundation\Auth\Guru as Authenticatable;
@@ -17,5 +19,9 @@ class Guru extends Model
         'foto',
         'username',
         'password',
- ];
+    ];
+
+    public function kelas(){
+        return $this->hasMany(Kelas::class);
+    }
 }

@@ -33,6 +33,14 @@
               </a>
             </li>
             <li class="nav-item py-2">
+              <a href="{{ route('kelas.index')}}" class="nav-link">
+                <i class="nav-icon fas fa-users" style="color:#464255"></i>
+                <p class="text-gray-500">
+                  Kelas
+                </p>
+              </a>
+            </li>
+            <li class="nav-item py-2">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book-reader" style="color:#464255"></i>
                 <p class="text-gray-500">
