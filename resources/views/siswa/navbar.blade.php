@@ -49,18 +49,10 @@
             <div class="truncate">Profile</div>
           </div>
           <div class="py-2">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+            <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
           </div>
         </div>
 
-        {{-- <li class="nav-item d-none d-sm-inline-block">
-          <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-            {{__('Logout') }}
-          </a>
-          <form action="{{ route('logout') }}" id="logout-form" method="POST" class="d-none">
-            @csrf
-          </form>
-        </li> --}}
       </ul>
     </nav>
         <!-- /.navbar -->

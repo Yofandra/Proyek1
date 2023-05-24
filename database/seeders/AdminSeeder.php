@@ -17,10 +17,12 @@ class AdminSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('admin')->insert([
-            'username'=>'admin',
-            'nama_admin'=>'admin',
-            'password'=>Hash::make('password')
+        DB::table('guru')->insert([
+            'nip'=>'124567',
+            'nama_guru'=>'guru',
+            'foto'=>'images/oke.jpg',
+            'username'=>'guru',
+            'password'=>Hash::make('12345678')
         ]);
     }
 }
