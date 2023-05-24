@@ -46,14 +46,14 @@
                     <label for="kelas">Kelas</label>
                     <select name="kelas" class="form-control">
                         @foreach($kelas as $Kelas)
-                            <option value={{$Kelas->id}}>{{$Kelas->nama_kelas}}</option>
+                            <option value={{$Kelas->idKelas}}>{{$Kelas->nama_kelas}}</option>
                         @endforeach
                         </select>
                 </div>
                 <div class="form-group">
                     <label for="no_absen">No Absen</label>
                     <input type="text" name="no_absen" id="no_absen" aria-describedby="no_absen"
-                        class="formcontrol bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
+                        class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
                 </div>
                 <br>
                 <button type="submit"

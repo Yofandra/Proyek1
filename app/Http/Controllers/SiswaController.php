@@ -19,15 +19,17 @@ class SiswaController extends Controller
         if($request->has('search')){
             $siswa = Siswa::where('nis', 'LIKE', '%' . request('search') . '%')
                 ->orWhere('nama', 'LIKE', '%' . request('search') . '%')
-                ->orWhere('kelas', 'LIKE', '%' . request('search') . '%')
                 ->orWhere('no_absen', 'LIKE', '%' . request('search') . '%')
-                ->paginate(5);
+                ->paginate(1);
     
             return view('admin.index_siswa', ['siswa' => $siswa]);
         }else{
-            $siswa = Siswa::orderBy('nis', 'desc')->paginate(5);
+            $siswa = Siswa::orderBy('nis', 'desc')->paginate(4);
             return view('admin.index_siswa', compact('siswa'))->with('i', (request()->input('page', 1) - 1) * 5);
         }
+    // $siswa = Siswa::paginate(5);
+    //     return view('admin.index_siswa', compact('siswa'))
+    //     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -59,9 +61,9 @@ class SiswaController extends Controller
             'nis' => 'required',
             'nama' => 'required',
             'foto' => 'required',
+            // 'kelas' => 'required',
             'username' => 'required',
             'password' => 'required',
-            'kelas' => 'required',
             'no_absen' => 'required',
             ]);
 
@@ -76,8 +78,9 @@ class SiswaController extends Controller
             $siswa->no_absen = $request->get('no_absen');
 
             $kelas = new Kelas;
-            $kelas->id = $request->get('kelas');
+            $kelas->idKelas = $request->get('kelas');
 
+            $siswa->kelas()->associate($kelas);
             $siswa->save();
             return redirect()->route('siswa.index')
             ->with('success', 'Siswa Berhasil Ditambahkan');

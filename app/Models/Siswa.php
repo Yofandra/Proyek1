@@ -18,7 +18,7 @@ class Siswa extends Model
         'username',
         'password',
         'nama',
-        'kelas',
+        'kelas_id',
         'nis',
         'no_absen',
     ];
