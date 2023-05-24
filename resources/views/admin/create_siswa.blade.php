@@ -44,8 +44,11 @@
                 </div>
                 <div class="form-group">
                     <label for="kelas">Kelas</label>
-                    <input type="kelas" name="kelas" id="kelas" aria-describedby="kelas"
-                        class="formcontrol bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
+                    <select name="kelas" class="form-control">
+                        @foreach($kelas as $Kelas)
+                            <option value={{$Kelas->id}}>{{$Kelas->nama_kelas}}</option>
+                        @endforeach
+                        </select>
                 </div>
                 <div class="form-group">
                     <label for="no_absen">No Absen</label>

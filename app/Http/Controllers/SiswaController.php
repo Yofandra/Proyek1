@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
-use App\Models\Siswa;
+use App\Models\Kelas;
 
 class SiswaController extends Controller
 {
@@ -37,7 +37,10 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view('admin.create_siswa');
+        // return view('admin.create_siswa');
+
+        $kelas = Kelas::all(); 
+        return view('admin.create_siswa',['kelas'=>$kelas]);
     }
 
     /**
@@ -70,8 +73,10 @@ class SiswaController extends Controller
             $siswa->foto =$image_name;
             $siswa->username = $request->get('username');
             $siswa->password = $request->get('password');
-            $siswa->kelas = $request->get('kelas');
             $siswa->no_absen = $request->get('no_absen');
+
+            $kelas = new Kelas;
+            $kelas->id = $request->get('kelas');
 
             $siswa->save();
             return redirect()->route('siswa.index')
@@ -99,7 +104,8 @@ class SiswaController extends Controller
     public function edit($nis)
     {
         $Siswa = Siswa::find($nis);
-        return view('siswa.edit', compact('Siswa'));
+        $kelas = Kelas::all();
+        return view('admin.edit_siswa', compact('Siswa', 'kelas'));
     }
 
     /**
