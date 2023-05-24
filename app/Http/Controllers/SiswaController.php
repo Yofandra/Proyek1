@@ -87,7 +87,7 @@ class SiswaController extends Controller
     public function show($nis)
     {
         $Siswa = Siswa::find($nis);
-        return view('siswa.detail', compact('Siswa'));
+        return view('admin.detail_siswa', compact('Siswa'));
     }
 
     /**
@@ -99,7 +99,7 @@ class SiswaController extends Controller
     public function edit($nis)
     {
         $Siswa = Siswa::find($nis);
-        return view('siswa.edit', compact('Siswa'));
+        return view('admin.edit_siswa', compact('Siswa'));
     }
 
     /**
