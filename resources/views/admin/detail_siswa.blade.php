@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('admin.layoutAdmin')
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center align-items-center">
@@ -12,13 +12,12 @@
                     <li class="list-group-item"><b>Username: </b>{{$Siswa->username}}</li>
                     <li class="list-group-item"><b>Kelas: </b>{{$Siswa->kelas}}</li>
                     <li class="list-group-item"><b>Password: </b>{{$Siswa->password}}</li>
-                    <li class="list-groupitem"><b>Nama: </b>{{$Siswa->nama}}</li>
+                    <li class="list-group-item"><b>Nama: </b>{{$Siswa->nama}}</li>
                     <li class="list-group-item"><b>Kelas: </b>{{$Siswa->kelas}}</li>
-                    <li class="list-groupitem"><b>No Absen: </b>{{$Siswa->no_absen}}</li>
+                    <li class="list-group-item"><b>No Absen: </b>{{$Siswa->no_absen}}</li>
                 </ul>
             </div>
-            <a class="btn btn-success mt-
-3" href="{{ route('mahasiswas.index') }}">Kembali</a>
+            <a class="btn btn-success mt-3" href="{{ route('siswa.index') }}">Kembali</a>
         </div>
     </div>
 </div>
