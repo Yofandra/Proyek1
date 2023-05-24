@@ -1,5 +1,3 @@
-@extends('layouts.app')
-@section('content')
 
 <!doctype html>
 <html>
@@ -24,7 +22,7 @@
                 <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-4">
                     @csrf
 
-                    <input class="p-2 mt-8  rounded-xl border" type="email" name="email" placeholder="Enter your email">
+                    <input class="p-2 mt-8  rounded-xl border" type="username" name="username" placeholder="Enter your username">
                     <div class="relative">
                         <!-- <label for="" class="font-normal font-medium text-sm leading-4 text-gray-700 mt-4">Password</label> -->
                         <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Enter your password">
@@ -50,4 +48,3 @@
 </body>
 
 </html>
-@endsection
