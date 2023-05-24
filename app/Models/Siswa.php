@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Siswa as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model; 
+use App\Models\Kelas;
 
 class Siswa extends Model       
 {
@@ -17,8 +18,12 @@ class Siswa extends Model
         'username',
         'password',
         'nama',
-        'kelas',
+        'kelas_id',
         'nis',
         'no_absen',
     ];
+
+    public function kelas(){
+        return $this->belongsTo(Kelas::class);
+    }
 }

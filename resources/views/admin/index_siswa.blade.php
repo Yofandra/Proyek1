@@ -8,7 +8,7 @@
             </h2>
             </center>
         </div>
-        <div class=" fixed top-20 right-3">
+        <!-- <div class=" fixed top-20 right-3">
             <a class="text-white bg-green-logo hover:bg-green-600 focus:ring-2 focus:ring-green-logo font-medium rounded-lg text-sm px-5 py-2.5 mr-3 mb-1"
                 href="{{ route('siswa.create') }}">Tambah Siswa</a> <br><br>
             </a>
@@ -19,7 +19,14 @@
                 </button>
 
             </div>
-        </div>
+        </div> -->
+        <nav class=" fixed top-20 right-3">
+        <a class="btn btn-success" href="{{ route('siswa.create') }}"> Input Mahasiswa</a> 
+            <form class="form-inline p-4">
+                <input type="search" class="form-control mr-sm-2" name="search" aria-label="Cari" value="{{request('search')}}" id="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+            </form>
+        </nav>
     </div>
 </div>
 @if ($message = Session::get('success'))
@@ -76,7 +83,7 @@
                     {{ $Siswa->password}}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $Siswa->kelas}}
+                    {{ $Siswa->kelas->nama_kelas}}
                 </td>
                 <td class="px-6 py-4">
                     {{ $Siswa->no_absen}}
@@ -93,4 +100,7 @@
             </tr>
             @endforeach
     </table>
+    <div class="d-flex">
+    {{ $siswa->links() }}
+</div>
     @endsection
