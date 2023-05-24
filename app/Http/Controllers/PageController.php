@@ -16,6 +16,7 @@ class PageController extends Controller
             // Lakukan operasi lain dengan $namaAdmin
         }
         return view('admin.layoutAdmin', compact('admin'));
+//       return redirect()->route('admin.index');
     }
 
     public function guru(){
@@ -25,6 +26,7 @@ class PageController extends Controller
             // Lakukan operasi lain dengan $namaAdmin
         }
         return view('guru.layoutGuru', compact('guru'));
+//       return redirect()->route('guru.dashboard');
     }
 
     public function siswa(){
@@ -33,5 +35,7 @@ class PageController extends Controller
             $namaSiswa = $siswa->nama_siswa;
         }
         return view('siswa.layoutSiswa', compact('siswa'));
+//       return redirect()->route('siswa.dashboard');
+
     }
 }

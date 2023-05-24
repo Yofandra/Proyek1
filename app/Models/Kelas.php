@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Guru;
+use App\Models\Siswa;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -22,5 +23,8 @@ class Kelas extends Model
 
     public function guru(){
         return $this->belongsTo(Guru::class);
+    }
+    public function siswa(){
+        return $this->hasMany(Siswa::class);
     }
 }

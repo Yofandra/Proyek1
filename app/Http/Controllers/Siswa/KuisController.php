@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Siswa;
 
-use App\Models\Admin;
+use App\Models\Soal;
+use App\Models\Nilai;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class KuisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.layoutAdmin');
+        $soal = Soal::all(); // mendapatkan data dari kelas
+        return view('siswa.kuis.kuis', ['soal' => $soal]);
+
     }
 
     /**
@@ -35,27 +39,44 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $soal = Soal::all();
+        
+        $score = 0;
+        foreach($soal as $Soal){
+            $jawab = $request->get('jawab_' . $Soal->id);
+            if($jawab == $Soal->opsi_benar){
+                $score ++;
+            }
+        }
+        $jmlh_soal = Soal::count();
+        $nilai_akhir = ($score / $jmlh_soal) * 100;
+        
+
+        $nilai = new Nilai();
+        $nilai->nilai = $nilai_akhir;
+        $nilai->save();
+        return $nilai_akhir;
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show($id)
     {
-        return view('admin.layoutAdmin');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +85,10 @@ class AdminController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +96,10 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy($id)
     {
         //
     }

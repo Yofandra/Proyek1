@@ -53,14 +53,6 @@
           </div>
         </div>
 
-        {{-- <li class="nav-item d-none d-sm-inline-block">
-          <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-            {{__('Logout') }}
-          </a>
-          <form action="{{ route('logout') }}" id="logout-form" method="POST" class="d-none">
-            @csrf
-          </form>
-        </li> --}}
       </ul>
     </nav>
         <!-- /.navbar -->
