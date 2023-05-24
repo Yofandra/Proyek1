@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\Kelas;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -15,9 +16,10 @@ class KelasController extends Controller
      */
     public function index()
     {
+        $admin = Admin::first();
         $kelas = Kelas::all();
         $posts = Kelas::orderBy('id', 'asc');
-        return view('admin.kelas.index_Kelas', compact('kelas'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('admin.kelas.index_Kelas', compact('kelas','admin'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
