@@ -18,6 +18,7 @@ class SiswaController extends Controller
      */
     public function index(Request $request)
     {
+        $admin = Admin::first();
         if($request->has('search')){
             $siswa = Siswa::where('nis', 'LIKE', '%' . request('search') . '%')
                 ->orWhere('nama', 'LIKE', '%' . request('search') . '%')
@@ -26,8 +27,12 @@ class SiswaController extends Controller
     
             return view('admin.index_siswa', ['siswa' => $siswa]);
         }else{
-            $siswa = Siswa::orderBy('nis', 'desc')->paginate(4);
-            return view('admin.index_siswa', compact('siswa'))->with('i', (request()->input('page', 1) - 1) * 5);
+
+            $siswa = Siswa::orderBy('nis', 'desc')->paginate(5);
+            return view('admin.index_siswa', compact('siswa', 'admin'))->with('i', (request()->input('page', 1) - 1) * 5);
+//             $siswa = Siswa::orderBy('nis', 'desc')->paginate(4);
+//             return view('admin.index_siswa', compact('siswa'))->with('i', (request()->input('page', 1) - 1) * 5);
+
         }
     // $siswa = Siswa::paginate(5);
     //     return view('admin.index_siswa', compact('siswa'))
