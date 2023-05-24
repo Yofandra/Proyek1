@@ -11,10 +11,10 @@ class Siswa extends Model
 {
     protected $table="siswa"; 
     public $timestamps= false;
-    protected $primaryKey = 'idSiswa';
+    protected $primaryKey = 'nis';
 
     protected $fillable = [
-        'idSiswa',
+        'nis',
         'username',
         'password',
         'nama',

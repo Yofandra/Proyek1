@@ -1,73 +1,50 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<!doctype html>
+<html>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/resources/js/loginscript.js">
+</head>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+<body>
+    <section class="bg-[#CFF5E7] min-h-screen flex items-center justify-center">
+        <!-- login container -->
+        <div class="bg-white flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+            <!-- form -->
+            <div class="md:w-1/2 px-8 md:px-16">
+                <img class="h-auto w-2x " src="{{asset('/img/login/logo.png')}}" alt="image description"><br>
+                <p class="font-Roboto 	font-weight: 400; text-lg text-[#4A4543]">Welcome Back</p>
+                <p class="font-Roboto font-weight: 400; text-xs text-[#808080]">Welcome back! Please enter your details.</p>
+                <form action="{{ route('login') }}" method="POST" class="flex flex-col gap-4">
+                    @csrf
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <input class="p-2 mt-8  rounded-xl border" type="username" name="username" placeholder="Enter your username">
+                    <div class="relative">
+                        <!-- <label for="" class="font-normal font-medium text-sm leading-4 text-gray-700 mt-4">Password</label> -->
+                        <input class="p-2 rounded-xl border w-full" type="password" name="password" placeholder="Enter your password">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-eye absolute top-1/2 right-3 -translate-y-1/2" viewBox="0 0 16 16">
+                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                        </svg>
+                    </div>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    <button class="bg-[#00B074] rounded-xl text-white py-2 hover:scale-105 duration-300">Sign in</button>
+                </form>
+<!-- 
+                <div class="flex items-center mb-4">
+                    <input checked id="checkbox-1" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="checkbox-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember fo 30 days <a href="#" class="text-blue-600 hover:underline dark:text-blue-500 "></a>.</label>
+                </div> -->
             </div>
-        </div>
+           
+   <!-- image -->
+    <div class="md:block hidden w-1/2">
+      <img class="rounded-2xl" src="{{asset('/img/login/bg-login.png')}}">
     </div>
-</div>
-@endsection
+</body>
+
+</html>

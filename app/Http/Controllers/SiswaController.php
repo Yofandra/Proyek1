@@ -6,6 +6,8 @@ use App\Models\Admin;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use App\Models\Kelas;
+use Illuminate\Support\Facades\Hash;
+
 
 class SiswaController extends Controller
 {
@@ -74,7 +76,7 @@ class SiswaController extends Controller
             $siswa->nama = $request->get('nama');
             $siswa->foto =$image_name;
             $siswa->username = $request->get('username');
-            $siswa->password = $request->get('password');
+            $siswa->password = Hash::make($request->get('password'));
             $siswa->no_absen = $request->get('no_absen');
 
             $kelas = new Kelas;
@@ -95,7 +97,7 @@ class SiswaController extends Controller
     public function show($nis)
     {
         $Siswa = Siswa::find($nis);
-        return view('siswa.detail', compact('Siswa'));
+        return view('admin.detail_siswa', compact('Siswa'));
     }
 
     /**
@@ -109,6 +111,7 @@ class SiswaController extends Controller
         $Siswa = Siswa::find($nis);
         $kelas = Kelas::all();
         return view('admin.edit_siswa', compact('Siswa', 'kelas'));
+
     }
 
     /**
@@ -123,7 +126,7 @@ class SiswaController extends Controller
         $request->validate([
             'nis' => 'required',
             'username' => 'required',
-            'password' => 'required',
+            'password' => Hash::make('required'),
             'nama_siswa' => 'required',
             'kelas' => 'required',
             'no_absen' => 'required',
