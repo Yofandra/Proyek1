@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
-use App\Models\Siswa;
 
 class SiswaController extends Controller
 {
