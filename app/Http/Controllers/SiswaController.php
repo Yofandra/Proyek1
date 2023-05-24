@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
-use App\Models\Siswa;
+use Illuminate\Support\Facades\Hash;
 
 class SiswaController extends Controller
 {
@@ -69,7 +69,7 @@ class SiswaController extends Controller
             $siswa->nama = $request->get('nama');
             $siswa->foto =$image_name;
             $siswa->username = $request->get('username');
-            $siswa->password = $request->get('password');
+            $siswa->password = Hash::make($request->get('password'));
             $siswa->kelas = $request->get('kelas');
             $siswa->no_absen = $request->get('no_absen');
 
@@ -114,7 +114,7 @@ class SiswaController extends Controller
         $request->validate([
             'nis' => 'required',
             'username' => 'required',
-            'password' => 'required',
+            'password' => Hash::make('required'),
             'nama_siswa' => 'required',
             'kelas' => 'required',
             'no_absen' => 'required',

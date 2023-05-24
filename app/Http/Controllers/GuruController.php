@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guru;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class GuruController extends Controller
 {
@@ -39,7 +40,7 @@ class GuruController extends Controller
             $guru->nama_guru = $request->get('nama_guru');
             $guru->foto =$image_name;
             $guru->username = $request->get('username');
-            $guru->password = $request->get('password');
+            $guru->password = Hash::make($request->get('password'));
 
             $guru->save();
             return redirect()->route('guru.index') 
@@ -77,7 +78,7 @@ class GuruController extends Controller
             $image_name = $request->file('image')->store('image', 'public');
             $guru->foto = $image_name;
             $guru->username = $request->get('username');
-            $guru->password = $request->get('password');
+            $guru->password = Hash::make($request->get('password'));
             $guru->save();
 
             return redirect()->route('guru.index') 
