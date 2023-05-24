@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
-use App\Models\Siswa;
 
 class SiswaController extends Controller
 {
@@ -87,7 +86,7 @@ class SiswaController extends Controller
     public function show($nis)
     {
         $Siswa = Siswa::find($nis);
-        return view('siswa.detail', compact('Siswa'));
+        return view('admin.detail_siswa', compact('Siswa'));
     }
 
     /**
@@ -99,7 +98,7 @@ class SiswaController extends Controller
     public function edit($nis)
     {
         $Siswa = Siswa::find($nis);
-        return view('siswa.edit', compact('Siswa'));
+        return view('admin.edit_siswa', compact('Siswa'));
     }
 
     /**
@@ -115,7 +114,7 @@ class SiswaController extends Controller
             'nis' => 'required',
             'username' => 'required',
             'password' => 'required',
-            'nama_siswa' => 'required',
+            'nama' => 'required',
             'kelas' => 'required',
             'no_absen' => 'required',
             ]);
