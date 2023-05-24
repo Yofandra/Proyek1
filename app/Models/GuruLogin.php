@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Model;
 
-class Admin extends Model
+class GuruLogin extends Model
 {
     
     use HasFactory, Notifiable;
@@ -17,11 +17,10 @@ class Admin extends Model
      *
      * @var array<int, string>
      */
-    protected $table = "admin";
-    protected $guard = "admin";
-    protected $primaryKey = "idAdmin";
+    protected $table = "guru";
+    protected $guard = "guru";
+    protected $primaryKey = "nip";
     protected $fillable = [
-        'name',
         'username',
         'password',
     ];
