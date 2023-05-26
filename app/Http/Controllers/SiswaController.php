@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use App\Models\Kelas;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -128,16 +129,29 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $nis)
     {
+        
         $request->validate([
             'nis' => 'required',
             'username' => 'required',
-            'password' => Hash::make('required'),
-            'nama_siswa' => 'required',
+            'password' => 'required',
+            'foto'=>'required',
+            'nama' => 'required',
             'kelas' => 'required',
             'no_absen' => 'required',
             ]);
 
-        Siswa::find($nis)->update($request->all());
+            $siswa = Siswa::where('nis', $nis)->first();
+            $siswa->nis = $request->get('nis');
+            $siswa->nama = $request->get('nama');
+            
+            if($siswa->foto && file_exists(storage_path('app/public/' . $siswa->foto))) {
+                Storage::delete('public/' . $siswa->foto);
+            }
+            $image_name = $request->file('foto')->store('image', 'public');
+            $siswa->foto = $image_name;
+            $siswa->username = $request->get('username');
+            $siswa->password = Hash::make($request->get('password'));
+            $siswa->save();
 
         return redirect()->route('siswa.index')
         ->with('success', 'Siswa Berhasil Diupdate');

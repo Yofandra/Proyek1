@@ -17,6 +17,7 @@ class Siswa extends Model
         'nis',
         'username',
         'password',
+        'foto',
         'nama',
         'kelas_id',
         'nis',
