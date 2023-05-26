@@ -20,11 +20,15 @@
 
             </div>
         </div> -->
-        <nav class=" fixed top-20 right-3">
-        <a class="btn btn-success" href="{{ route('siswa.create') }}"> Input Mahasiswa</a> 
+        
+        <nav class="flex flex-nowrap fixed top-20 right-3">
+        <!-- <button type="button" class="px-2 py-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('siswa.create') }}">Tambah Siswa</button> -->
+        <!-- <a class="btn btn-success" href="{{ route('siswa.create') }}"> Tambah Siswa</a>  -->
             <form class="form-inline p-4">
+            <button type="button" class="px-2 py-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('siswa.create') }}">Tambah Siswa</button>
                 <input type="search" class="form-control mr-sm-2" name="search" aria-label="Cari" value="{{request('search')}}" id="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+
             </form>
         </nav>
     </div>
@@ -94,12 +98,16 @@
                         <a class="btn btn-primary" href="{{ route('siswa.edit',$Siswa->nis) }}">Edit</a>
                         @csrf
                         @method('DELETE')
+<<<<<<< HEAD
                         <button type="submit" class="btn btn-danger">Delete</button> -->
                         <a class="text-black" href="{{ route('siswa.show',$Siswa->nis) }}"><i class='fas fa-file-alt mr-4' style='font-size:24px'></i></a>
                         <a class="text-black" href="{{ route('siswa.edit',$Siswa->nis) }}"><i class='fas fa-pencil-alt mr-4' style='font-size:24px'></i></a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-black"><i class='fas fa-trash-alt' style='font-size:24px'></i></button>
+=======
+                        <button type="submit" class="btn btn-danger fa fa-trash-o " style="font-size:36px">Delete</button>
+>>>>>>> 02f3353a8cf58bc796c39b5ffa050bbbfa764aec
                     </form>
                 </td>
             </tr>
