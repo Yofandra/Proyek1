@@ -15,7 +15,7 @@
                 </ul>
             </div>
             @endif
-            <form method="post" action="{{ route('siswa.store') }}" id="myForm" enctype="multipart/form-data">
+            <form method="post" action="{{ route('data-siswa.store') }}" id="myForm" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="nis">NIS</label>

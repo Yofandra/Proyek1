@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Guru;
 
-use App\Models\Guru;
-use App\Models\Soal;
-use App\Models\Kategori;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Kategori;
+use App\Models\Soal;
+use Illuminate\Http\Request;
 
 class SoalController extends Controller
 {
@@ -17,7 +16,7 @@ class SoalController extends Controller
      */
     public function index()
     {
-        $kategori = Kategori::all(); 
+        $kategori = Kategori::all();
         return view('guru.kuis.index', ['kategori' => $kategori]);
     }
 
@@ -42,30 +41,30 @@ class SoalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-    'soal' => 'required',
-    'opsi_a' => 'required',
-    'opsi_b' => 'required',
-    'opsi_c' => 'required',
-    'opsi_d' => 'required',
-    'opsi_benar' => 'required',
-]);
+            'soal' => 'required',
+            'opsi_a' => 'required',
+            'opsi_b' => 'required',
+            'opsi_c' => 'required',
+            'opsi_d' => 'required',
+            'opsi_benar' => 'required',
+        ]);
 
-$soal = new Soal();
-$soal->soal = $request->get('soal');
-$soal->opsi_a = $request->get('opsi_a');
-$soal->opsi_b = $request->get('opsi_b');
-$soal->opsi_c = $request->get('opsi_c');
-$soal->opsi_d = $request->get('opsi_d');
-$soal->opsi_benar = $request->get('opsi_benar');
+        $soal = new Soal();
+        $soal->soal = $request->get('soal');
+        $soal->opsi_a = $request->get('opsi_a');
+        $soal->opsi_b = $request->get('opsi_b');
+        $soal->opsi_c = $request->get('opsi_c');
+        $soal->opsi_d = $request->get('opsi_d');
+        $soal->opsi_benar = $request->get('opsi_benar');
 
-$kategori = new Kategori;
-$kategori->id = $request->get('kategori');
+        $kategori = new Kategori;
+        $kategori->id = $request->get('kategori');
 
-$soal->kategori()->associate($kategori);
-$soal->save();
+        $soal->kategori()->associate($kategori);
+        $soal->save();
 
-return redirect()->route('soal.index')
-    ->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('soal.index')
+            ->with('success', 'Data Berhasil Ditambahkan');
 
     }
 
@@ -78,7 +77,7 @@ return redirect()->route('soal.index')
     public function show($id)
     {
         $soal = Soal::all(); // mendapatkan data dari Soal
-return view('guru.kuis.list_soal', compact('soal'));
+        return view('guru.kuis.list_soal', compact('soal'));
 
     }
 

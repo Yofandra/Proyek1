@@ -85,7 +85,7 @@ class SiswaController extends Controller
 
             $siswa->kelas()->associate($kelas);
             $siswa->save();
-            return redirect()->route('siswa.index')
+            return redirect()->route('data-siswa.index')
             ->with('success', 'Siswa Berhasil Ditambahkan');
     }
 
@@ -148,7 +148,7 @@ class SiswaController extends Controller
             $siswa->password = Hash::make($request->get('password'));
             $siswa->save();
 
-        return redirect()->route('siswa.index')
+        return redirect()->route('data-siswa.index')
         ->with('success', 'Siswa Berhasil Diupdate');
     }
 
@@ -161,7 +161,7 @@ class SiswaController extends Controller
     public function destroy($nis)
     {
         Siswa::find($nis)->delete();
-        return redirect()->route('siswa.index')
+        return redirect()->route('data-siswa.index')
         -> with('success', 'Siswa Berhasil Dihapus');
     }
     public function kuis(){

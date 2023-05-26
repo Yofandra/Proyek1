@@ -16,7 +16,7 @@
                 <li class="list-group-item"><b>Password: </b>{{$Guru->password}}</li>
             </ul>
         </div>
-        <a class="btn btn-success mt3" href="{{ route('guru.index') }}">Kembali</a>
+        <a class="btn btn-success mt3" href="{{ route('data-guru.index') }}">Kembali</a>
         </div>
     </div>
 </div>

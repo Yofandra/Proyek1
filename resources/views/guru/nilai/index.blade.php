@@ -7,7 +7,7 @@
                 <h2>INFORMASI HASIL KUIS</h2>
             </div>
             <div class="fixed top-20 right-2">
-                <a class="text-white text-semibold bg-[#00B074] hover:bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" href="{{ route('kelas.create') }}" >Cetak Laporan</a>
+                <a class="text-white text-semibold bg-[#00B074] hover:bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" href="{{ route('data-kelas.create') }}" >Cetak Laporan</a>
             </div>
         </div>
     </div>
