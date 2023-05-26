@@ -7,11 +7,7 @@
                 <h2>INFORMASI KELAS</h2>
             </div>
             <div class="fixed top-20 right-2">
-<<<<<<< HEAD
-                <a class="px-2 py-2 mr-4 text-sm font-medium text-center text-white bg-green-logo rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('kelas.create') }}" >Tambah Kelas</a>
-=======
-                <a class="text-white text-semibold bg-[#00B074] hover:bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" href="{{ route('data-kelas.create') }}" >Tambah Kelas</a>
->>>>>>> b36c00c08b82313d1524edeee1a8cdb2de98a714
+                <a class="px-2 py-2 mr-4 text-sm font-medium text-center text-white bg-green-logo rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('data-kelas.create') }}" >Tambah Kelas</a>
             </div>
         </div>
     </div>
@@ -55,11 +51,9 @@
                 </td>
                 <td class="px-6 py-2 text-center">
                     <form action="{{ route('data-kelas.destroy',$Kelas->idKelas) }}" method="POST">
-                        <!-- <a class="text-white text-semibold bg-sky-500 hover:bg-sky-600 font-medium rounded-lg text-sm p-2 m-2 w-2xl" href="{{ route('data-kelas.edit',$Kelas->idKelas) }}" >Edit</a> -->
                         <a class="text-black" href="{{ route('data-kelas.edit',$Kelas->idKelas) }}"><i class='fas fa-pencil-alt mr-4' style='font-size:24px'></i></a>
                         @csrf
                         @method('DELETE')
-                        <!-- <button type="submit" class="text-white text-semibold bg-red-500 hover:bg-red-600 font-medium rounded-lg text-sm p-2 m-2">Delete</button> -->
                         <button type="submit" class="text-black"><i class='fas fa-trash-alt' style='font-size:24px'></i></button>
                     </form>
                 </td>
