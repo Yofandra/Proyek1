@@ -18,7 +18,7 @@
                 <li class="list-group-item"><b>No Absen: </b>{{$Siswa->no_absen}}</li>
             </ul>
         </div>
-        <a class="btn btn-success mt3" href="{{ route('siswa.index') }}">Kembali</a>
+        <a class="btn btn-success mt3" href="{{ route('data-siswa.index') }}">Kembali</a>
         </div>
     </div>
 </div>
