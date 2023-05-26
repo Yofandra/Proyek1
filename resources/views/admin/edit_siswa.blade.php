@@ -1,12 +1,11 @@
 @extends('admin.layoutAdmin')
+
 @section('content')
-<div class="container mt-5">
-    <div class="row justify-content-center align-items-center">
-        <div class="card" style="width: 24rem;">
-            <div class="card-header">
-                Edit Siswa
-            </div>
-            <div class="card-body">
+
+    <div class="flex flex-col items-center pb-10">
+        <h5 class="mb-1 text-xl font-medium text-black dark:text-white py-3">Edit Data Guru</h5>
+        <div class="max-w-sm py-3 px-20 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="input-body">
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -17,41 +16,47 @@
                     </ul>
                 </div>
                 @endif
-                <form method="post" action="{{ route('siswa.update', $Siswa->nis) }}" id="myForm">
-                    @csrf
+                <form method="post" action="{{ route('siswa.update', $Siswa->nis) }}" id="myForm" enctype="multipart/form-data">
+                    @csrf    
                     @method('PUT')
+                    
                     <div class="form-group">
-                        <label for="nis">Nis</label>
-                        <input type="text" name="nis" class="form-control" id="nis" value="{{ $Siswa->nis }}"ariadescribedby="nis">
-                    </div>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control" id="username" value="{{ $Siswa->username }}"ariadescribedby="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="Kelas">Kelas</label>
-                        <input type="Kelas" name="Kelas" class="form-control" id="Kelas" value="{{ $Siswa->Kelas }}" ariadescribedby="Kelas">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" value="{{ $Siswa->password }}" ariadescribedby="password">
+                        <label for="nip">NIS</label>
+                        <input type="text" name="nis" id="nis" value="{{$Siswa->nis}}" aria-describedby="nis" class="formcontrol bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama</label>
-                        <input type="nama" name="nama" class="form-control" id="nama" value="{{ $Siswa->nama }}" ariadescribedby="nama">
+                        <input type="text" name="nama" id="nama" value="{{$Siswa->nama}}" aria-describedby="nama" class="formcontrol bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
                     </div>
                     <div class="form-group">
-                        <label for="kelas">Kelas</label>
-                        <input type="kelas" name="kelas" class="form-control" id="kelas" value="{{ $Siswa->kelas }}" ariadescribedby="kelas">
+                        <label for="image">Foto</label>
+                        <input type="file" name="foto" id="foto" value="{{asset('storage/'.$Siswa->foto)}}" aria-describedby="foto" class="formcontrol bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
+                        <img width="100px" src="{{asset('storage/'.$Siswa->foto)}}">
                     </div>
                     <div class="form-group">
-                        <label for="no_absen">No Absen</label>
-                        <input type="no_absen" name="no_absen" class="form-control" id="no_absen" value="{{ $Siswa->no_absen }}" ariadescribedby="no_absen">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" value="{{$Siswa->username}}" aria-describedby="username" class="formcontrol bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" name="password" id="password" value="{{$Siswa->password}}" aria-describedby="password" class="formcontrol bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
+                    </div>
+                    <div class="form-group">
+                    <label for="kelas">Kelas</label>
+                    <select name="kelas" class="form-control">
+                        @foreach($kelas as $Kelas)
+                            <option value={{$Kelas->idKelas}}>{{$Kelas->nama_kelas}}</option>
+                        @endforeach
+                        </select>
+                </div>
+                <div class="form-group">
+                        <label for="password">No Absen</label>
+                        <input type="text" name="no_absen" id="no_absen" value="{{$Siswa->no_absen}}" aria-describedby="no_absen" class="formcontrol bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-logo focus:border-green-logo block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600">
+                    </div>
+                    <br>
+                    <button type="submit" class="text-white bg-green-logo hover:bg-green-600 focus:ring-2 focus:ring-green-logo font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Submit</button>
                 </form>
             </div>
         </div>
     </div>
-</div>
 @endsection
