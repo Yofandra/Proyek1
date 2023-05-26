@@ -94,11 +94,20 @@
                 </td>
                 <td class="px-6 py-4">
                     <form action="{{ route('siswa.destroy',$Siswa->nis) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('siswa.show',$Siswa->nis) }}">Show</a>
+                        <!-- <a class="btn btn-info" href="{{ route('siswa.show',$Siswa->nis) }}">Show</a>
                         <a class="btn btn-primary" href="{{ route('siswa.edit',$Siswa->nis) }}">Edit</a>
                         @csrf
                         @method('DELETE')
+<<<<<<< HEAD
+                        <button type="submit" class="btn btn-danger">Delete</button> -->
+                        <a class="text-black" href="{{ route('siswa.show',$Siswa->nis) }}"><i class='fas fa-file-alt mr-4' style='font-size:24px'></i></a>
+                        <a class="text-black" href="{{ route('siswa.edit',$Siswa->nis) }}"><i class='fas fa-pencil-alt mr-4' style='font-size:24px'></i></a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-black"><i class='fas fa-trash-alt' style='font-size:24px'></i></button>
+=======
                         <button type="submit" class="btn btn-danger fa fa-trash-o " style="font-size:36px">Delete</button>
+>>>>>>> 02f3353a8cf58bc796c39b5ffa050bbbfa764aec
                     </form>
                 </td>
             </tr>

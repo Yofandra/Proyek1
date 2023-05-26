@@ -61,14 +61,14 @@
                     {{ $Guru->password}}
                 </td>
                 <td class="px-6 py-4">
-                    {{-- <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}}
+                    <!-- {{-- <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}} -->
                     <form action="{{ route('guru.destroy',$Guru->nip) }}" method="POST">
 
-                        <a class="btn btn-info" href="{{ route('guru.show',$Guru->nip) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('guru.edit',$Guru->nip) }}">Edit</a>
+                        <a class="text-black" href="{{ route('guru.show',$Guru->nip) }}"><i class='fas fa-file-alt mr-4' style='font-size:24px'></i></a>
+                        <a class="text-black" href="{{ route('guru.edit',$Guru->nip) }}"><i class='fas fa-pencil-alt mr-4' style='font-size:24px'></i></a>
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="text-black"><i class='fas fa-trash-alt' style='font-size:24px'></i></button>
                     </form>
                 </td>
             </tr>
