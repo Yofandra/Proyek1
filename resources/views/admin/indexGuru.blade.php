@@ -7,7 +7,7 @@
                 <h2>INFORMASI GURU</h2>
             </div>
             <div class="fixed top-20 right-2">
-                <a class="text-white bg-green-logo hover:bg-green-600 focus:ring-2 focus:ring-green-logo font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" href="{{ route('guru.create') }}" >Tambah Guru</a>
+                <a class="text-white bg-green-logo hover:bg-green-600 focus:ring-2 focus:ring-green-logo font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" href="{{ route('data-guru.create') }}" >Tambah Guru</a>
             </div>
         </div>
     </div>
@@ -62,10 +62,14 @@
                 </td>
                 <td class="px-6 py-4">
                     <!-- {{-- <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}} -->
+<<<<<<< HEAD
                     <form class="flex" action="{{ route('guru.destroy',$Guru->nip) }}" method="POST">
+=======
+                    <form action="{{ route('data-guru.destroy',$Guru->nip) }}" method="POST">
+>>>>>>> b36c00c08b82313d1524edeee1a8cdb2de98a714
 
-                        <a class="text-black" href="{{ route('guru.show',$Guru->nip) }}"><i class='fas fa-file-alt mr-4' style='font-size:24px'></i></a>
-                        <a class="text-black" href="{{ route('guru.edit',$Guru->nip) }}"><i class='fas fa-pencil-alt mr-4' style='font-size:24px'></i></a>
+                        <a class="text-black" href="{{ route('data-guru.show',$Guru->nip) }}"><i class='fas fa-file-alt mr-4' style='font-size:24px'></i></a>
+                        <a class="text-black" href="{{ route('data-guru.edit',$Guru->nip) }}"><i class='fas fa-pencil-alt mr-4' style='font-size:24px'></i></a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-black"><i class='fas fa-trash-alt' style='font-size:24px'></i></button>

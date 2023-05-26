@@ -15,7 +15,7 @@
                     </ul>
                 </div>
                 @endif
-                <form method="post" action="{{ route('kelas.update', $kelas->idKelas) }}" id="myForm">
+                <form method="post" action="{{ route('data-kelas.update', $kelas->idKelas) }}" id="myForm">
                     @csrf
                     @method('PUT')
                     <div class="form-group">

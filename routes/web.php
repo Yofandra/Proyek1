@@ -51,21 +51,22 @@ Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index')->middleware('auth:admin');
-    Route::resource('/guru', GuruController::class)->middleware('auth:admin');
-    Route::resource('/siswa', SiswaController::class)->middleware('auth:admin');
-    Route::resource('/kelas', KelasController::class)->middleware('auth:admin');
+    Route::resource('/data-guru', GuruController::class)->middleware('auth:admin');
+    Route::resource('/data-siswa', SiswaController::class)->middleware('auth:admin');
+    Route::resource('/data-kelas', KelasController::class)->middleware('auth:admin');
 });
 
 //Guru
-Route::group(['prefix' => 'gurus'], function () {
+Route::group(['prefix' => 'guru'], function () {
     Route::get('/', [HomeGuruController::class, 'index'])->name('guru.dashboard')->middleware('auth:guru');
     Route::resource('/soal', SoalController::class)->middleware('auth:guru');
     Route::resource('/nilai', NilaiController::class)->middleware('auth:guru');
 });
 
 //Siswa
-Route::group(['prefix' => 'siswas'], function () {
+Route::group(['prefix' => 'siswa'], function () {
     Route::get('/', [HomeSiswaController::class, 'index'])->name('siswa.dashboard')->middleware('auth:siswa');
+    Route::get('kuis/home', [KuisController::class, 'tampil_kuis'])->name('kuis.tampil_kuis');
     Route::resource('/kuis', KuisController::class)->middleware('auth:siswa');
     // Route::get('/kuis', KuisController::class,'store')->name('siswa.kuis.store');
 

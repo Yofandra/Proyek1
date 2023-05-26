@@ -16,7 +16,7 @@
                     </ul>
                 </div>
                 @endif
-                <form method="post" action="{{ route('guru.update', $Guru->nip) }}" id="myForm" enctype="multipart/form-data">
+                <form method="post" action="{{ route('data-guru.update', $Guru->nip) }}" id="myForm" enctype="multipart/form-data">
                     @csrf    
                     @method('PUT')
                     

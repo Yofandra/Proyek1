@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Siswa;
 
 use App\Models\Soal;
 use App\Models\Nilai;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -55,8 +56,8 @@ class KuisController extends Controller
         $nilai = new Nilai();
         $nilai->nilai = $nilai_akhir;
         $nilai->save();
-        return $nilai_akhir;
-
+        return redirect()->route('kuis.tampil_kuis')
+            ->with('success', 'Kuis Sudah Dikerjakan');
     }
 
     /**
@@ -102,5 +103,9 @@ class KuisController extends Controller
     public function destroy($id)
     {
         //
+    }
+        public function tampil_kuis(){
+        $kategori = Kategori::all();
+        return view('siswa.kuis.index', ['kategori' => $kategori]);
     }
 }

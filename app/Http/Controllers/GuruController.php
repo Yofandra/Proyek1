@@ -43,7 +43,7 @@ class GuruController extends Controller
             $guru->password = Hash::make($request->get('password'));
 
             $guru->save();
-            return redirect()->route('guru.index') 
+            return redirect()->route('data-guru.index') 
             -> with('success', 'Data Guru Berhasil Ditambahkan');
     }
 
@@ -81,13 +81,13 @@ class GuruController extends Controller
             $guru->password = Hash::make($request->get('password'));
             $guru->save();
 
-            return redirect()->route('guru.index') 
+            return redirect()->route('data-guru.index') 
                 ->with('success', 'Data Guru Berhasil Diupdate');
     }
 
     public function destroy($nip)
     {
         Guru::find($nip)->delete();
-        return redirect()->route('guru.index') -> with('success', 'Data Guru Berhasil Dihapus');
+        return redirect()->route('data-guru.index') -> with('success', 'Data Guru Berhasil Dihapus');
     }
 }
