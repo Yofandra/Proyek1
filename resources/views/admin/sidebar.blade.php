@@ -25,7 +25,7 @@
               with font-awesome or any other icon font library -->
 
             <li class="nav-item py-2">
-              <a href="{{ route('guru.index')}}" class="nav-link">
+              <a href="{{ route('data-guru.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-chalkboard-teacher" style="color:#464255"></i>
                 <p class="text-gray-500 ">
                   Guru
@@ -33,7 +33,7 @@
               </a>
             </li>
             <li class="nav-item py-2">
-              <a href="{{ route('kelas.index')}}" class="nav-link">
+              <a href="{{ route('data-kelas.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-users" style="color:#464255"></i>
                 <p class="text-gray-500">
                   Kelas
@@ -41,7 +41,7 @@
               </a>
             </li>
             <li class="nav-item py-2">
-              <a href="{{ route('siswa.index')}}" class="nav-link">
+              <a href="{{ route('data-siswa.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-book-reader" style="color:#464255"></i>
                 <p class="text-gray-500">
                   Siswa

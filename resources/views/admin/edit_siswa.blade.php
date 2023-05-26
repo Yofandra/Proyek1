@@ -16,7 +16,7 @@
                     </ul>
                 </div>
                 @endif
-                <form method="post" action="{{ route('siswa.update', $Siswa->nis) }}" id="myForm" enctype="multipart/form-data">
+                <form method="post" action="{{ route('data-siswa.update', $Siswa->nis) }}" id="myForm" enctype="multipart/form-data">
                     @csrf    
                     @method('PUT')
                     

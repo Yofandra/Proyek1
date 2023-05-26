@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-light-primary elevation-1">
       <!-- Brand Logo -->
       <a class="brand-link">
-        <img src="logo.png" alt="DeScience Logo" class="img-fluid py-4" >
+        <img src="/logo.png" alt="DeScience Logo" class="img-fluid py-4" >
         <span class="brand-text font-weight-light"></span>
       </a>
 
@@ -49,7 +49,7 @@
               </a>
             </li>
             <li class="nav-item py-2">
-              <a href="{{ route('kuis.index')}}" class="nav-link">
+              <a href="{{ route('kuis.tampil_kuis')}}" class="nav-link">
                 <i class="nav-icon fas fa-file" style="color:#464255"></i>
                 <p class="text-gray-500">
                   Kuis

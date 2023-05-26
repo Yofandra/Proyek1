@@ -53,7 +53,7 @@ class KelasController extends Controller
 
             $kelas->guru()->associate($guru);
             $kelas->save();
-            return redirect()->route('kelas.index') 
+            return redirect()->route('data-kelas.index') 
             -> with('success', 'Data Kelas Berhasil Ditambahkan');
     }
 
@@ -103,7 +103,7 @@ class KelasController extends Controller
 
             $kelas->guru()->associate($guru);
             $kelas->save();
-            return redirect()->route('kelas.index') 
+            return redirect()->route('data-kelas.index') 
             -> with('success', 'Data Kelas Berhasil Di edit');
     }
 
@@ -116,7 +116,7 @@ class KelasController extends Controller
     public function destroy($idKelas)
     {
         Kelas::find($idKelas)->delete();
-        return redirect()->route('kelas.index')
+        return redirect()->route('data-kelas.index')
         -> with('success', 'Data Kelas Berhasil Dihapus');
     }
 }
