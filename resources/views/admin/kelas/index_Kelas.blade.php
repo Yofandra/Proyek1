@@ -7,7 +7,7 @@
                 <h2>INFORMASI KELAS</h2>
             </div>
             <div class="fixed top-20 right-2">
-                <a class="text-white text-semibold bg-[#00B074] hover:bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" href="{{ route('kelas.create') }}" >Tambah Kelas</a>
+                <a class="px-2 py-2 mr-4 text-sm font-medium text-center text-white bg-green-logo rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('kelas.create') }}" >Tambah Kelas</a>
             </div>
         </div>
     </div>

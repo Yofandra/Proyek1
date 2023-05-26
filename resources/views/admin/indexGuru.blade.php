@@ -62,7 +62,7 @@
                 </td>
                 <td class="px-6 py-4">
                     <!-- {{-- <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}} -->
-                    <form action="{{ route('guru.destroy',$Guru->nip) }}" method="POST">
+                    <form class="flex" action="{{ route('guru.destroy',$Guru->nip) }}" method="POST">
 
                         <a class="text-black" href="{{ route('guru.show',$Guru->nip) }}"><i class='fas fa-file-alt mr-4' style='font-size:24px'></i></a>
                         <a class="text-black" href="{{ route('guru.edit',$Guru->nip) }}"><i class='fas fa-pencil-alt mr-4' style='font-size:24px'></i></a>
