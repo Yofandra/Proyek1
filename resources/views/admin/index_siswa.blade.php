@@ -1,37 +1,20 @@
 @extends('admin.layoutAdmin')
 @section('content')
 <div class="row">
-    <div class="col-lg-6 margin-tb">
-        <div class="pull-left mt-2 px-6 py-4">
+    <div class="col-lg-6 mr-24">
+        <div class="mt-2 px-6 py-4">
             <h2>
-                <center> DATA SISWA <br> SMP NEGERI 1 KESAMBEN
+                <center> DATA SISWA <br> SMP NEGERI 1 KESAMBEN</center>
             </h2>
-            </center>
-        </div>
-        <!-- <div class=" fixed top-20 right-3">
-            <a class="text-white bg-green-logo hover:bg-green-600 focus:ring-2 focus:ring-green-logo font-medium rounded-lg text-sm px-5 py-2.5 mr-3 mb-1"
-                href="{{ route('data-siswa.create') }}">Tambah Siswa</a> <br><br>
-            </a>
-            <div class="input-group input-group-sm">
-                <input type="search" class="form-control mr-sm-2" name="search" aria-label="Cari Siswa" value="{{request('search')}}" id="search">
-                <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-
-            </div>
-        </div> -->
-        
-        <nav class="flex flex-nowrap fixed top-20 right-3">
-        {{-- <!-- <button type="button" class="px-2 py-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('data-siswa.create') }}">Tambah Siswa</button> --> --}}
-        <a class="btn btn-success" href="{{ route('data-siswa.create') }}"> Tambah Siswa</a>
-            <form class="form-inline p-4">
-            <button type="button" class="px-2 py-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('data-siswa.create') }}">Tambah Siswa</button>
-                <input type="search" class="form-control mr-sm-2" name="search" aria-label="Cari" value="{{request('search')}}" id="search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
-
-            </form>
-        </nav>
+        </div>        
     </div>
+    <nav class="flex ml-24 top-20 right-3">
+        <form class="form-inline p-4">
+        <a type="button" class="px-2 py-2 mr-4 text-sm font-medium text-center text-white bg-green-logo rounded-lg hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{ route('data-siswa.create') }}">Tambah Siswa</a>
+            <input type="search" class="form-control mr-sm-2" name="search" aria-label="Cari" value="{{request('search')}}" id="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
+        </form>
+    </nav>
 </div>
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
@@ -93,14 +76,11 @@
                     {{ $Siswa->no_absen}}
                 </td>
                 <td class="px-6 py-4">
-                    <form action="{{ route('data-siswa.destroy',$Siswa->nis) }}" method="POST">
-                        <!-- <a class="btn btn-info" href="{{ route('data-siswa.show',$Siswa->nis) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('data-siswa.edit',$Siswa->nis) }}">Edit</a>
+                    <form class="flex" action="{{ route('data-siswa.destroy',$Siswa->nis) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button> -->
-                        <a class="text-black" href="{{ route('data-siswa.show',$Siswa->nis) }}"><i class='fas fa-file-alt mr-4' style='font-size:24px'></i></a>
-                        <a class="text-black" href="{{ route('data-siswa.edit',$Siswa->nis) }}"><i class='fas fa-pencil-alt mr-4' style='font-size:24px'></i></a>
+                        <a class="text-black" href="{{ route('data-siswa.show',$Siswa->nis) }}"><i class='fas fa-file-alt mr-2' style='font-size:24px'></i></a>
+                        <a class="text-black" href="{{ route('data-siswa.edit',$Siswa->nis) }}"><i class='fas fa-pencil-alt mr-2' style='font-size:24px'></i></a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-black"><i class='fas fa-trash-alt' style='font-size:24px'></i></button>
