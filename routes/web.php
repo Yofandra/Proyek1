@@ -11,6 +11,7 @@ use App\Http\Controllers\Guru\NilaiController;
 use App\Http\Controllers\Siswa\KuisController;
 use App\Http\Controllers\Guru\HomeGuruController;
 use App\Http\Controllers\Siswa\HomeSiswaController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +69,7 @@ Route::group(['prefix' => 'siswa'], function () {
     Route::get('/', [HomeSiswaController::class, 'index'])->name('siswa.dashboard')->middleware('auth:siswa');
     Route::get('kuis/home', [KuisController::class, 'tampil_kuis'])->name('kuis.tampil_kuis');
     Route::resource('/kuis', KuisController::class)->middleware('auth:siswa');
+    Route::get('/game', [GameController::class, 'index'])->name('game.index')->middleware('auth:siswa');
     // Route::get('/kuis', KuisController::class,'store')->name('siswa.kuis.store');
 
     Route::get('/materi', function () {

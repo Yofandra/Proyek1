@@ -1,4 +1,4 @@
-@extends('admin.layoutAdmin')
+@extends('guru.layout')
 
 @section('content')
     <div class="row">

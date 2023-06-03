@@ -52,7 +52,6 @@
       <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
-    @include('siswa.footers')
   </div>
   <!-- ./wrapper -->
 
