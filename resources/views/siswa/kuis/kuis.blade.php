@@ -41,7 +41,7 @@
                                 </ul>
                             </div>
                             @endif
-                            <form method="post" action="{{ route('kuis.store') }}" id="myForm">
+                            <form method="post" action="{{ route('kuis.store',['nis' => Auth::user()->nis])}}" id="myForm">
                                 @csrf
                                 @foreach ($soal as $Soal)
                                     <div class=" mt-4 mb-2 rounded-lg border-b border-gray-300">
@@ -76,7 +76,8 @@
                                         </label>
                                     </div>
                                 @endforeach
-
+                                <input type="hidden" value="{{ Auth::user()->nis }}" name="siswa_nis" id="siswa_nis">
+                                <input type="hidden" value="{{$Soal->kategori->id}}" name="kategori_id" id="kategori_id">
                                 <div class="flex space-x-2 float-right">
                                     <button type="submit" class="bg-blue-400 border shadow p-2 rounded text-white text-semibold flex items-center focus:outline-none focus:shadow-outline hover:bg-blue-900">
                                         <span class="mx-2">Submit</span>
