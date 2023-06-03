@@ -3,6 +3,11 @@
     <div class="pagetitle">
       <h1>Daftar Kuis</h1>
     </div>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
 <div class="m-6">
     <div class="flex flex-wrap -mx-6">
         @foreach($kategori as $Kategori)
@@ -14,7 +19,7 @@
 
                 <div class="mx-4">
                     <h1 class="text-xl font-bold text-gray-700 mb-4">{{$Kategori->nama}}</h1>
-                    <a class="btn btn-info" href="{{ route('kuis.index')}}">Kerjakan</a>
+                    <a class="btn btn-info" href="{{ route('kuis.show',$Kategori->id)}}">Kerjakan</a>
                 </div>
             </div>
         </div>
