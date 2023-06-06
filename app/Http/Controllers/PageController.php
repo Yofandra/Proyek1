@@ -30,12 +30,12 @@ class PageController extends Controller
     }
 
     public function siswa(){
-        $siswa = Siswa::all();
-        if($siswa) {
-            $namaSiswa = $siswa->nama_siswa;
-        }
-        return view('siswa.layoutSiswa', compact('siswa'));
-//       return redirect()->route('siswa.dashboard');
+        // $siswa = Siswa::all();
+        // if($siswa) {
+        //     $namaSiswa = $siswa->nama_siswa;
+        // }
+        // return view('siswa.layoutSiswa', compact('siswa'));
+      return redirect()->route('siswa.dashboard');
 
     }
 }
