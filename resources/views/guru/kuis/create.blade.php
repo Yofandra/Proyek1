@@ -15,6 +15,11 @@
                     </ul>
                 </div>
                 @endif
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
                 <form method="post" action="{{ route('soal.store') }}" id="myForm">
                     @csrf
                     <div class="form-group">
@@ -24,6 +29,9 @@
                             <option value={{$Kategori->id}}>{{$Kategori->nama}}</option>
                         @endforeach
                         </select>
+                        <div class="py-2">
+                            <a class="text-white text-semibold bg-[#00B074] hover:bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" href="{{ route('soal.createKategori') }}" >Tambah Kategori</a>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="soal">Soal</label>
@@ -52,6 +60,7 @@
                     
                     
                     <div class="flex space-x-2 float-right">
+                        <input type="hidden" name="action" value="soal">
                         <button type="submit" class="bg-blue-400 border shadow p-2 rounded text-white text-semibold flex items-center focus:outline-none focus:shadow-outline hover:bg-blue-900">
                             <span class="mx-2">Submit</span>
                         </button>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Siswa;
 
 use App\Models\Soal;
+use App\Models\Kelas;
 use App\Models\Nilai;
+use App\Models\Siswa;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,9 +19,16 @@ class KuisController extends Controller
      */
     public function index()
     {
-        $soal = Soal::all(); // mendapatkan data dari kelas
-        return view('siswa.kuis.kuis', ['soal' => $soal]);
+        $kelasId = session('kelas_idKelas');
+        $nipGuru = Kelas::where('idKelas', $kelasId)->value('guru_nip');
 
+        // Mengambil siswa yang termasuk dalam kelas siswa
+        $siswa = Siswa::where('kelas_idKelas', $kelasId)->get();
+
+        // Mengambil data kategori berdasarkan NIP guru dan siswa yang termasuk dalam kelas
+        $kategori = Kategori::where('guru_nip', $nipGuru)->get();
+
+        return view('siswa.kuis.index', ['kategori' => $kategori]);
     }
 
     /**
@@ -49,15 +58,21 @@ class KuisController extends Controller
                 $score ++;
             }
         }
-        $jmlh_soal = Soal::count();
+        $kategoriId = $request->get('kategori_id');
+        $jmlh_soal = Soal::where('kategori_id', $kategoriId)->count();
         $nilai_akhir = ($score / $jmlh_soal) * 100;
         
 
         $nilai = new Nilai();
         $nilai->nilai = $nilai_akhir;
+
+        $siswa = new Siswa();
+        $siswa->nis = $request->get('siswa_nis');
+
+        $nilai->siswa()->associate($siswa);
         $nilai->save();
-        return redirect()->route('kuis.tampil_kuis')
-            ->with('success', 'Kuis Sudah Dikerjakan');
+        return redirect()->route('kuis.index')
+            ->with('success', 'Jawaban anda telah disimpan');
     }
 
     /**
@@ -68,7 +83,8 @@ class KuisController extends Controller
      */
     public function show($id)
     {
-        //
+        $soal = Soal::where('kategori_id', $id)->get();
+        return view('siswa.kuis.kuis', compact('soal'));
     }
 
     /**
@@ -104,8 +120,18 @@ class KuisController extends Controller
     {
         //
     }
-        public function tampil_kuis(){
-        $kategori = Kategori::all();
+    public function tampil_kuis($kelasId){
+        // $kategori = Kategori::all();
+        // return view('siswa.kuis.index', ['kategori' => $kategori]);
+
+        $nipGuru = Kelas::where('idKelas', $kelasId)->value('guru_nip');
+
+        // Mengambil siswa yang termasuk dalam kelas siswa
+        $siswa = Siswa::where('kelas_idKelas', $kelasId)->get();
+
+        // Mengambil data kategori berdasarkan NIP guru dan siswa yang termasuk dalam kelas
+        $kategori = Kategori::where('guru_nip', $nipGuru)->get();
+
         return view('siswa.kuis.index', ['kategori' => $kategori]);
     }
 }

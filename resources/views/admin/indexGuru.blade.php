@@ -61,7 +61,6 @@
                     {{ $Guru->password}}
                 </td>
                 <td class="px-6 py-4">
-                    <!-- {{-- <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a> --}} -->
                     <form action="{{ route('data-guru.destroy',$Guru->nip) }}" method="POST">
 
                         <a class="text-black" href="{{ route('data-guru.show',$Guru->nip) }}"><i class='fas fa-file-alt mr-4' style='font-size:24px'></i></a>
