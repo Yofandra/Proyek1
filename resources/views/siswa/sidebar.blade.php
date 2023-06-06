@@ -41,7 +41,7 @@
               </a>
             </li>
             <li class="nav-item py-2">
-              <a href="#" class="nav-link">
+              <a href="{{ route('game.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-gamepad" style="color:#464255"></i>
                 <p class="text-gray-500">
                   Game
