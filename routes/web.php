@@ -75,7 +75,7 @@ Route::group(['prefix' => 'siswa'], function () {
     // Route::get('/kuis', KuisController::class,'store')->name('siswa.kuis.store');
 
     Route::get('/materi', function () {
-        return view('siswa.materi');
+        return view('siswa.materi.materi');
     });
 
 });
