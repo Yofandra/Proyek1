@@ -1,12 +1,5 @@
-@extends('siswa.materi')
+@extends('siswa.materi.layoutMateri')
 @section('contentMateri')
-<div class="pagetitle">
-    <h1>Materi</h1>
-</div>
-<div class="m-6">
-    <div class="flex flex-wrap -mx-6">
-        <div class="p-6 sm:w-1/2 xl:w-3/4">
-            <div class="flex px-5 py-6 bg-white">
                 <div class="p-2">
                     <center>
                         <h1>Hewan BMemiliki Kaki</h1>
@@ -38,10 +31,4 @@
                     karakteristik khusus dan variasi dalam struktur dan jumlah kaki mereka
 
                 </div>
-            </div>
-        </div>
-        @include('siswa.materi.navbar_materi')
-    </div>
-</div>
-</div>
 @endsection

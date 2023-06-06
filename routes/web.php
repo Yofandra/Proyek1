@@ -11,7 +11,8 @@ use App\Http\Controllers\Guru\NilaiController;
 use App\Http\Controllers\Siswa\KuisController;
 use App\Http\Controllers\Guru\HomeGuruController;
 use App\Http\Controllers\Siswa\HomeSiswaController;
-use App\Http\Controllers\GameController;
+use App\Http\Controllers\Siswa\GameController;
+use App\Http\Controllers\Siswa\MateriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,10 +74,10 @@ Route::group(['prefix' => 'siswa'], function () {
     Route::resource('/kuis', KuisController::class)->middleware('auth:siswa');
     Route::get('/game', [GameController::class, 'index'])->name('game.index')->middleware('auth:siswa');
     // Route::get('/kuis', KuisController::class,'store')->name('siswa.kuis.store');
-
-    Route::get('/materi', function () {
-        return view('siswa.materi.materi');
-    });
-
+    Route::get('/materi',[MateriController::class, 'materi'])->name('siswa.materi')->middleware('auth:siswa');
+    Route::get('/materi/darahPanas',[MateriController::class, 'darahPanas'])->name('materi.darahPanas')->middleware('auth:siswa');
+    Route::get('/materi/darahDingin',[MateriController::class, 'darahDingin'])->name('materi.darahDingin')->middleware('auth:siswa');
+    Route::get('/materi/memilikiKaki',[MateriController::class, 'memilikiKaki'])->name('materi.memilikiKaki')->middleware('auth:siswa');
+    Route::get('/materi/tidakBerkaki',[MateriController::class, 'tanpaKaki'])->name('materi.tanpaKaki')->middleware('auth:siswa');
 });
 
