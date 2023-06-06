@@ -11,6 +11,7 @@ use App\Http\Controllers\Guru\NilaiController;
 use App\Http\Controllers\Siswa\KuisController;
 use App\Http\Controllers\Guru\HomeGuruController;
 use App\Http\Controllers\Siswa\HomeSiswaController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -59,15 +60,18 @@ Route::group(['prefix' => 'admin'], function () {
 //Guru
 Route::group(['prefix' => 'guru'], function () {
     Route::get('/', [HomeGuruController::class, 'index'])->name('guru.dashboard')->middleware('auth:guru');
+    Route::get('/kategori', [SoalController::class, 'createKategori'])->name('soal.createKategori')->middleware('auth:guru');
     Route::resource('/soal', SoalController::class)->middleware('auth:guru');
+    Route::get('nilai/cetak', [NilaiController::class, 'cetak_pdf'])->name('nilai.cetak_pdf')->middleware('auth:guru');
     Route::resource('/nilai', NilaiController::class)->middleware('auth:guru');
 });
 
 //Siswa
 Route::group(['prefix' => 'siswa'], function () {
     Route::get('/', [HomeSiswaController::class, 'index'])->name('siswa.dashboard')->middleware('auth:siswa');
-    Route::get('kuis/home', [KuisController::class, 'tampil_kuis'])->name('kuis.tampil_kuis');
+    Route::get('kuis/home', [KuisController::class, 'tampil_kuis'])->name('kuis.tampil_kuis')->middleware('auth:siswa');
     Route::resource('/kuis', KuisController::class)->middleware('auth:siswa');
+    Route::get('/game', [GameController::class, 'index'])->name('game.index')->middleware('auth:siswa');
     // Route::get('/kuis', KuisController::class,'store')->name('siswa.kuis.store');
 
     Route::get('/materi', function () {
