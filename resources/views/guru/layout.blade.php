@@ -76,8 +76,11 @@
 
         <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm font-medium text-gray-900 rounded-full hover:text-green-logo dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white" type="button">
           <span class="sr-only">Open user menu</span>
-          <img class="w-8 h-8 mr-2 rounded-full" src="/dist/img/avatar4.png" alt="user photo">
-          user
+          <img class="w-8 h-8 mr-2 rounded-full" src="{{asset('storage/'. Auth::user()->foto)}}" alt="user photo">
+          {{ Auth::user()->nama_guru }}
+          @php
+            session(['nip' => Auth::user()->nip]);
+          @endphp
           <svg class="w-4 h-4 mx-1.5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         </button>
         <!-- Dropdown menu -->
@@ -126,7 +129,14 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
-
+            <li class="nav-item py-2">
+              <a href="{{ route('guru.dashboard')}}" class="nav-link">
+                <i class="nav-icon fa fa-home" style="color:#464255"></i>
+                <p class="text-gray-500 ">
+                  Dashboard
+                </p>
+              </a>
+            </li>
             <li class="nav-item py-2">
               <a href="{{ route('soal.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-chalkboard-teacher" style="color:#464255"></i>
@@ -136,7 +146,7 @@
               </a>
             </li>
             <li class="nav-item py-2">
-              <a href="{{ route('nilai.index')}}" class="nav-link">
+              <a href="{{ route('nilai.show', Auth::user()->nip)}}" class="nav-link">
                 <i class="nav-icon fas fa-book-reader" style="color:#464255"></i>
                 <p class="text-gray-500">
                   Nilai
