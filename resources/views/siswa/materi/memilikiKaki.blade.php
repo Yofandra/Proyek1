@@ -9,34 +9,31 @@
             <div class="flex px-5 py-6 bg-white">
                 <div class="p-2">
                     <center>
-                        <h1>Hewan BMemiliki Kaki</h1>
+                        <h1>Hewan Memiliki Kaki</h1>
                     </center><br>
 
                     Invertebrata memiliki beragam pembagian kaki, tergantung pada kelompok taksonomi mereka. Beberapa
                     contoh pembagian kaki pada invertebrata adalah sebagai berikut:
-
-                    Arachnida: Arachnida seperti laba-laba, kalajengking, dan tungau memiliki delapan kaki.
-
-                    Insecta: Serangga, seperti lalat, lebah, dan ngengat, umumnya memiliki enam kaki.
-
-                    Crustacea: Hewan krustasea, seperti kepiting, udang, dan lobster, biasanya memiliki sepuluh atau
+                    1. Arachnida: Arachnida seperti laba-laba, kalajengking, dan tungau memiliki delapan kaki.
+                    2. Insecta: Serangga, seperti lalat, lebah, dan ngengat, umumnya memiliki enam kaki.
+                    3. Crustacea: Hewan krustasea, seperti kepiting, udang, dan lobster, biasanya memiliki sepuluh atau
                     lebih kaki.
-
-                    Chilopoda: Kelas Chilopoda mencakup hewan seperti lipan dan kelabang. Mereka memiliki banyak segmen
+                    4. Chilopoda: Kelas Chilopoda mencakup hewan seperti lipan dan kelabang. Mereka memiliki banyak segmen
                     tubuh yang dilengkapi dengan satu pasang kaki di setiap segmen.
-
-                    Diplopoda: Kelas Diplopoda termasuk hewan seperti lipan dan kecoa kayu. Mereka memiliki banyak
+                    5. Diplopoda: Kelas Diplopoda termasuk hewan seperti lipan dan kecoa kayu. Mereka memiliki banyak
                     segmen tubuh yang dilengkapi dengan dua pasang kaki di setiap segmen.
-
-                    Mollusca: Hewan molluska, seperti siput, kerang, dan cumi-cumi, biasanya memiliki kaki yang
+                    6. Mollusca: Hewan molluska, seperti siput, kerang, dan cumi-cumi, biasanya memiliki kaki yang
                     termodifikasi menjadi struktur yang berbeda, seperti tentakel atau cakar.
-
-                    Echinodermata: Hewan echinodermata, seperti bintang laut dan teripang, memiliki ekstremitas yang
+                    7. Echinodermata: Hewan echinodermata, seperti bintang laut dan teripang, memiliki ekstremitas yang
                     disebut "tube feet" yang digunakan untuk bergerak.
 
                     Ini hanya beberapa contoh pembagian kaki pada invertebrata. Setiap kelompok invertebrata memiliki
                     karakteristik khusus dan variasi dalam struktur dan jumlah kaki mereka
 
+                    <center>
+                        <h7>Contoh Hewan Invertebrata yang Memiliki Kaki</h7>
+                        <img class="w-66 h-30" src="{{asset('storage/image/gambarMateri/semut_berkaki.jpg')}}" alt="">
+                    </center><br>
                 </div>
             </div>
         </div>

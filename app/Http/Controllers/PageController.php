@@ -10,23 +10,11 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function admin(){
-        $admin = Admin::first();
-        if ($admin) {
-            $namaAdmin = $admin->nama_admin; // Mengakses properti nama_admin dari objek tunggal admin
-            // Lakukan operasi lain dengan $namaAdmin
-        }
-        return view('admin.layoutAdmin', compact('admin'));
-//       return redirect()->route('admin.index');
+      return redirect()->route('admin.index');
     }
 
     public function guru(){
-        $guru = Guru::first();
-        if ($guru) {
-            $namaGuru = $guru->nama_guru; // Mengakses properti nama_admin dari objek tunggal admin
-            // Lakukan operasi lain dengan $namaAdmin
-        }
-        return view('guru.layoutGuru', compact('guru'));
-//       return redirect()->route('guru.dashboard');
+      return redirect()->route('guru.dashboard');
     }
 
     public function siswa(){

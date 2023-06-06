@@ -76,7 +76,7 @@ Route::group(['prefix' => 'siswa'], function () {
 
     Route::get('/materi', function () {
         return view('siswa.materi.materi');
-    });
+    })->middleware('auth:siswa');
 
 });
 
