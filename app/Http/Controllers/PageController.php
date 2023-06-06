@@ -2,24 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
+use App\Models\Siswa;
+use App\Models\Guru;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function admin(){
-        
-        // return view('admin.layoutAdmin');
-        return redirect()->route('admin.index');
-
+        $admin = Admin::first();
+        if ($admin) {
+            $namaAdmin = $admin->nama_admin; // Mengakses properti nama_admin dari objek tunggal admin
+            // Lakukan operasi lain dengan $namaAdmin
+        }
+        return view('admin.layoutAdmin', compact('admin'));
+//       return redirect()->route('admin.index');
     }
 
     public function guru(){
-        // return view('guru.layoutGuru');
-        return redirect()->route('guru.dashboard');
+        $guru = Guru::first();
+        if ($guru) {
+            $namaGuru = $guru->nama_guru; // Mengakses properti nama_admin dari objek tunggal admin
+            // Lakukan operasi lain dengan $namaAdmin
+        }
+        return view('guru.layoutGuru', compact('guru'));
+//       return redirect()->route('guru.dashboard');
     }
 
     public function siswa(){
-        return redirect()->route('siswa.dashboard');
-        // return view('siswa.layoutSiswa');
+        // $siswa = Siswa::all();
+        // if($siswa) {
+        //     $namaSiswa = $siswa->nama_siswa;
+        // }
+        // return view('siswa.layoutSiswa', compact('siswa'));
+      return redirect()->route('siswa.dashboard');
+
     }
 }
