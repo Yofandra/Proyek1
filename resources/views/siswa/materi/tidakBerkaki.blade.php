@@ -1,7 +1,8 @@
 @extends('siswa.materi.layoutMateri')
 @section('contentMateri')
+        <div class="p-2 break-all">
                     <center>
-                        <h1>Hewan Tidak Berkaki/h1>
+                        <h1>Hewan Tidak Berkaki</h1>
                     </center><br>
 
                     Terdapat banyak hewan invertebrata yang tidak memiliki kaki. Beberapa contoh hewan invertebrata yang
@@ -28,5 +29,5 @@
                         <h7>Contoh Hewan Invertebrata yang Tidak Berkaki</h7>
                         <img class="w-66 h-30" src="{{asset('storage/image/gambarMateri/ubur_tanpa.jpg')}}" alt="">
                     </center><br>
-                </div>
+        </div>
 @endsection
