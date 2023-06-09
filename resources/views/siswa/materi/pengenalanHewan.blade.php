@@ -14,6 +14,7 @@
                     <center>
                         <img class="w-66 h-30" src="{{asset('storage/image/gambarMateri/bagan1.jpg')}}" alt="">
                     </center><br>
-                    Hewan yang terdapat di muka bumi ini sangat beragam, baik dari segi bentuk maupun ukurannya. Secara umum hewan dapat diklasifikasikan menjadi 2 yaitu hewan vertebrata (bertulang belakang) dan hewan invertebrata (tidak bertulang belakang).
+                    Hewan yang terdapat di muka bumi ini sangat beragam, baik dari segi bentuk maupun ukurannya. 
+                    Secara umum hewan dapat diklasifikasikan menjadi 2 yaitu hewan vertebrata (bertulang belakang) dan hewan invertebrata (tidak bertulang belakang).
                 </div>
 @endsection
