@@ -26,4 +26,8 @@ class MateriController extends Controller
     public function tanpaKaki(){
         return view('siswa.materi.tidakBerkaki');
     }
+
+    public function pengenalan(){
+        return view('siswa.materi.pengenalanHewan');
+    }
 }
