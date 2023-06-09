@@ -7,11 +7,16 @@
             Homoiterm atau berdarah panas adalah kemampuan hewan untuk mengatur suhu tubuhnya terhadap
             lingkungan.
 
-            Kemampuan ini dapat membuat hewan berkeringat ketika suhu panas, dan kedinginan ketika suhu dingin.
+                    Homoiterm atau berdarah panas adalah kemampuan hewan untuk mengatur suhu tubuhnya terhadap
+                    lingkungan.
+                    Kemampuan ini dapat membuat hewan berkeringat ketika suhu panas, dan kedinginan ketika suhu dingin.
+                    Namun, hewan-hewan berdarah panas dapat menurunkan suhu tubuhnya ketika suhu lingkungan sedang
+                    tinggi, dan sebaliknya.
+                    Contoh hewan berdarah panas adalah kucing, harimau, anjing, ayam, burung, dan hewan mamalia.
 
-            Namun, hewan-hewan berdarah panas dapat menurunkan suhu tubuhnya ketika suhu lingkungan sedang
-            tinggi, dan sebaliknya.
-
-            Contoh hewan berdarah panas adalah kucing, anjing, ayam, burung, dan hewan mamalia.
+                    <center>
+                        <h7>Contoh Hewan Berdarah Panas</h7>
+                        <img class="w-66 h-30" src="{{asset('storage/image/gambarMateri/harimau_dp.jpg')}}" alt="">
+                    </center><br>
     </div>
 @endsection
