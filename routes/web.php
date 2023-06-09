@@ -79,5 +79,6 @@ Route::group(['prefix' => 'siswa'], function () {
     Route::get('/materi/darahDingin',[MateriController::class, 'darahDingin'])->name('materi.darahDingin')->middleware('auth:siswa');
     Route::get('/materi/memilikiKaki',[MateriController::class, 'memilikiKaki'])->name('materi.memilikiKaki')->middleware('auth:siswa');
     Route::get('/materi/tidakBerkaki',[MateriController::class, 'tanpaKaki'])->name('materi.tanpaKaki')->middleware('auth:siswa');
+    Route::get('/materi/pengenalan',[MateriController::class, 'pengenalan'])->name('materi.pengenalan')->middleware('auth:siswa');
 });
 
