@@ -13,20 +13,14 @@ class GuruController extends Controller
 
     public function index()
     {
-        $admin = Admin::first();
-        if ($admin) {
-            $namaAdmin = $admin->nama_admin; // Mengakses properti nama_admin dari objek tunggal admin
-            // Lakukan operasi lain dengan $namaAdmin
-        }
         $guru = Guru::all();
         $posts = Guru::orderBy('nip', 'desc')->paginate(6);
-        return view('admin.indexGuru', compact('guru', 'admin'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('admin.indexGuru', compact('guru'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
-        $admin = Admin::first();
-        return view('admin.createGuru', compact('admin'));
+        return view('admin.createGuru');
     }
 
     public function store(Request $request)
@@ -62,9 +56,8 @@ class GuruController extends Controller
 
     public function edit($nip)
     {
-        $admin = Admin::first();
         $Guru = Guru::find($nip);
-        return view('admin.editGuru', compact('Guru','admin'));
+        return view('admin.editGuru', compact('Guru'));
     }
 
     public function update(Request $request, $nip)

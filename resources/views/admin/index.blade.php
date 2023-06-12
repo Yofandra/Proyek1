@@ -44,7 +44,7 @@
                         <h5 class="font-semi-bold text-gray-800 mb-2">Jumlah Siswa</h5>
                         <h1 class="text-xl text-center font-bold text-gray-700 mb-2">{{ $jumlahSiswa }}</h1>
                         
-                        <button class="rounded-lg float-right"><a class="text-sm text-gray-700 p-2 align-center" href="{{ route('data-guru.index')}}">Lihat<i class="pl-2 fas fa-arrow-right"></i></a></button>
+                        <button class="rounded-lg float-right"><a class="text-sm text-gray-700 p-2 align-center" href="{{ route('data-siswa.index')}}">Lihat<i class="pl-2 fas fa-arrow-right"></i></a></button>
                     </div>                
                 </div>
             </div
