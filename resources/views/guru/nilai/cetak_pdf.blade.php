@@ -23,6 +23,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Siswa</th>
+                                <th>Sesi</th>
                                 <th>Nilai</th>
                                 <th>Selesai</th>
                             </tr>
@@ -36,10 +37,13 @@
                                         {{ $Nilai->siswa->nama }}
                                     </td>
                                     <td>
+                                        {{ $Nilai->kategori->nama}}
+                                    </td>
+                                    <td>
                                         {{ $Nilai->nilai }}
                                     </td>
                                     <td>
-                                        {{ $Nilai->created_at }}
+                                        {{ date('d F Y, h:i A', strtotime($Nilai->waktu_pengerjaan)) }}
                                     </td>
                                     </tr>
                                 </tbody>

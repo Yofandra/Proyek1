@@ -49,6 +49,7 @@ class KuisController extends Controller
      */
     public function store(Request $request)
     {
+        $waktu = now(); // Mendapatkan waktu saat ini
         $soal = Soal::all();
         
         $score = 0;
@@ -60,17 +61,18 @@ class KuisController extends Controller
         }
         $kategoriId = $request->get('kategori_id');
         $jmlh_soal = Soal::where('kategori_id', $kategoriId)->count();
-        $nilai_akhir = ($score / $jmlh_soal) * 100;
-        
+        $score_akhir = ($score / $jmlh_soal) * 100;
+        $nilai_akhir = round($score_akhir, 2);
 
-        $nilai = new Nilai();
+        $siswa = Siswa::find($request->siswa_nis);
+        $kategori = Kategori::find($request->kategori_id);
+
+        // Menyimpan data nilai
+        $nilai = new Nilai;
         $nilai->nilai = $nilai_akhir;
+        $nilai->waktu_pengerjaan = $waktu;
 
-        $siswa = new Siswa();
-        $siswa->nis = $request->get('siswa_nis');
-
-        $nilai->siswa()->associate($siswa);
-        $nilai->save();
+        $siswa->kategori()->attach($kategori, ['nilai' => $nilai->nilai, 'waktu_pengerjaan'=>$nilai->waktu_pengerjaan]);
         return redirect()->route('kuis.index')
             ->with('success', 'Jawaban anda telah disimpan');
     }

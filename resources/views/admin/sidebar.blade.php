@@ -23,7 +23,14 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
-
+              <li class="nav-item py-2">
+              <a href="{{ route('admin.index')}}" class="nav-link">
+                <i class="nav-icon fas fas fa-home" style="color:#464255"></i>
+                <p class="text-gray-500 ">
+                  Dashboard
+                </p>
+              </a>
+            </li>
             <li class="nav-item py-2">
               <a href="{{ route('data-guru.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-chalkboard-teacher" style="color:#464255"></i>

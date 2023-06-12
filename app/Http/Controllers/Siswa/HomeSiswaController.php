@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Siswa;
 
+use Auth;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +16,10 @@ class HomeSiswaController extends Controller
      */
     public function index()
     {
-        return view('siswa.index');
+        $kelas = new Kelas();
+        $siswa = Auth::user();
+        $siswa->load('kelas');
+        return view('siswa.index', compact('siswa'));
     }
 
     /**

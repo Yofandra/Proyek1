@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use App\Models\Admin;
+use App\Models\Kelas;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,7 +17,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.layoutAdmin');
+        $jumlahKelas = Kelas::count();
+        $jumlahSiswa = Siswa::count();
+        $jumlahGuru = Guru::count();
+        return view('admin.index', compact('jumlahKelas', 'jumlahSiswa', 'jumlahGuru'));
     }
 
     /**
