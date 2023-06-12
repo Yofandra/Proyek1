@@ -33,7 +33,7 @@
               </a>
             </li>
             <li class="nav-item py-2">
-              <a href="{{ route('siswa.dashboard')}}" class="nav-link">
+              <a href="{{ route('siswa.materi')}}" class="nav-link">
                 <i class="nav-icon fas fa-book" style="color:#464255"></i>
                 <p class="text-gray-500">
                   Materi

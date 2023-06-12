@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
@@ -12,14 +13,20 @@ class GuruController extends Controller
 
     public function index()
     {
+        $admin = Admin::first();
+        if ($admin) {
+            $namaAdmin = $admin->nama_admin; // Mengakses properti nama_admin dari objek tunggal admin
+            // Lakukan operasi lain dengan $namaAdmin
+        }
         $guru = Guru::all();
         $posts = Guru::orderBy('nip', 'desc')->paginate(6);
-        return view('admin.indexGuru', compact('guru'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('admin.indexGuru', compact('guru', 'admin'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
-        return view('admin.createGuru');
+        $admin = Admin::first();
+        return view('admin.createGuru', compact('admin'));
     }
 
     public function store(Request $request)
@@ -55,8 +62,9 @@ class GuruController extends Controller
 
     public function edit($nip)
     {
+        $admin = Admin::first();
         $Guru = Guru::find($nip);
-        return view('admin.editGuru', compact('Guru'));
+        return view('admin.editGuru', compact('Guru','admin'));
     }
 
     public function update(Request $request, $nip)
