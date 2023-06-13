@@ -1,11 +1,12 @@
 <?php
 namespace App\Models;
+use App\Models\Kelas;
+use App\Models\Kategori;
+use Illuminate\Database\Eloquent\Model; 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Siswa as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model; 
-use App\Models\Kelas;
 
 class Siswa extends Model       
 {
@@ -27,7 +28,10 @@ class Siswa extends Model
     public function kelas(){
         return $this->belongsTo(Kelas::class);
     }
-    public function nilai(){
-        return $this->belongsTo(Nilai::class);
+    // public function nilai(){
+    //     return $this->belongsTo(Nilai::class);
+    // }
+    public function kategori(){
+        return $this->belongsToMany(Kategori::class, "nilai", "siswa_nis","kategori_id");
     }
 }

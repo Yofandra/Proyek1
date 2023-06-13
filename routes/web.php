@@ -61,6 +61,7 @@ Route::group(['prefix' => 'admin'], function () {
 //Guru
 Route::group(['prefix' => 'guru'], function () {
     Route::get('/', [HomeGuruController::class, 'index'])->name('guru.dashboard')->middleware('auth:guru');
+    Route::get('/data-siswa', [HomeGuruController::class, 'tampilSiswa'])->name('tampilSiswa')->middleware('auth:guru');
     Route::get('/kategori', [SoalController::class, 'createKategori'])->name('soal.createKategori')->middleware('auth:guru');
     Route::resource('/soal', SoalController::class)->middleware('auth:guru');
     Route::get('nilai/cetak', [NilaiController::class, 'cetak_pdf'])->name('nilai.cetak_pdf')->middleware('auth:guru');
