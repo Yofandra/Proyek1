@@ -99,7 +99,8 @@ class NilaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Nilai::find($id)->delete();
+        return redirect()->route('nilai.index') -> with('success', 'Data Nilai Berhasil Dihapus');
     }
     public function cetak_pdf(){
         $nilai = Nilai::all();

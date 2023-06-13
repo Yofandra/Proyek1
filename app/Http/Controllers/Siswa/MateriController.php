@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class MateriController extends Controller
 {
     public function materi(){
-        return view('siswa.materi.layoutMateri');
+        return view('siswa.materi.pengenalanHewan');
     }
 
     public function darahPanas(){

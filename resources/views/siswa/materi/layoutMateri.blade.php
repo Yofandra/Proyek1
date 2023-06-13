@@ -2,8 +2,8 @@
 @section('content')
 
 <div class="flex flex-wrap">
-    <div class="sm:w-1/2 xl:w-3/4">
-        <div class="flex items-center px-5 py-6 bg-white">
+    <div class="xl:w-3/4">
+        <div class="flex items-center mx-0 px-5 py-6 bg-white">
             @yield('contentMateri')
         </div>
     </div>

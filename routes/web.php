@@ -73,12 +73,13 @@ Route::group(['prefix' => 'siswa'], function () {
     Route::get('kuis/home', [KuisController::class, 'tampil_kuis'])->name('kuis.tampil_kuis')->middleware('auth:siswa');
     Route::resource('/kuis', KuisController::class)->middleware('auth:siswa');
     Route::get('/game', [GameController::class, 'index'])->name('game.index')->middleware('auth:siswa');
-    // Route::get('/kuis', KuisController::class,'store')->name('siswa.kuis.store');
-    Route::get('/materi',[MateriController::class, 'materi'])->name('siswa.materi')->middleware('auth:siswa');
-    Route::get('/materi/darahPanas',[MateriController::class, 'darahPanas'])->name('materi.darahPanas')->middleware('auth:siswa');
-    Route::get('/materi/darahDingin',[MateriController::class, 'darahDingin'])->name('materi.darahDingin')->middleware('auth:siswa');
-    Route::get('/materi/memilikiKaki',[MateriController::class, 'memilikiKaki'])->name('materi.memilikiKaki')->middleware('auth:siswa');
-    Route::get('/materi/tidakBerkaki',[MateriController::class, 'tanpaKaki'])->name('materi.tanpaKaki')->middleware('auth:siswa');
-    Route::get('/materi/pengenalan',[MateriController::class, 'pengenalan'])->name('materi.pengenalan')->middleware('auth:siswa');
+    Route::group(['prefix' => 'materi'], function(){
+        Route::get('/',[MateriController::class, 'materi'])->name('siswa.materi')->middleware('auth:siswa');
+        Route::get('/darahPanas',[MateriController::class, 'darahPanas'])->name('materi.darahPanas')->middleware('auth:siswa');
+        Route::get('/darahDingin',[MateriController::class, 'darahDingin'])->name('materi.darahDingin')->middleware('auth:siswa');
+        Route::get('/memilikiKaki',[MateriController::class, 'memilikiKaki'])->name('materi.memilikiKaki')->middleware('auth:siswa');
+        Route::get('/tidakBerkaki',[MateriController::class, 'tanpaKaki'])->name('materi.tanpaKaki')->middleware('auth:siswa');
+        Route::get('/pengenalan',[MateriController::class, 'pengenalan'])->name('materi.pengenalan')->middleware('auth:siswa');
+    });
 });
 

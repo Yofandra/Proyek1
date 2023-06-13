@@ -34,6 +34,9 @@
                 <th scope="col" class="px-6 py-3 text-center">
                     Selesai
                 </th>
+                <th scope="col" class="px-6 py-3 text-center">
+                    Action
+                </th>
             </tr>
         </thead>
         <?php $i=1 ?>
@@ -51,6 +54,13 @@
                 </td>
                 <td class="px-6 py-2 text-center">
                     {{ $Nilai->created_at}}
+                </td>
+                <td class="px-6 py-2 text-center">
+                    <form action="{{ route('nilai.destroy',$Nilai->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-black"><i class='fas fa-trash-alt' style='font-size:24px'></i></button>
+                    </form>
                 </td>
                 {{-- <td class="px-6 py-2 text-center">
                     <form action="{{ route('Nilai.destroy',$Nilai->idNilai) }}" method="POST">

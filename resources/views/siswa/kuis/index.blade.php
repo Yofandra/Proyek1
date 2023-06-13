@@ -1,6 +1,6 @@
 @extends('siswa.layoutSiswa')
 @section('content')
-    <div class="pagetitle">
+    <div class="px-4 py-3">
       <h1>Daftar Kuis</h1>
     </div>
     @if ($message = Session::get('success'))

@@ -135,7 +135,8 @@ class SoalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Soal::find($id)->delete();
+        return redirect()->route('soal.index')-> with('success', 'Data Soal Berhasil Dihapus');
     }
 
     public function createKategori(){

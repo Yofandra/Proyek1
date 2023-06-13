@@ -49,6 +49,11 @@
                         {{$Soal->opsi_d}}
                         </label>
                     </div>
+                    <form action="{{ route('soal.destroy',$Soal->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-white bg-red-600 hover:bg-red-700 focus:ring-2 font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2">Hapus Soal</button>
+                    </form>
                     
         
     </div>
