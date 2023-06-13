@@ -138,6 +138,14 @@
               </a>
             </li>
             <li class="nav-item py-2">
+              <a href="{{ route('tampilSiswa')}}" class="nav-link">
+                <i class="nav-icon fas fa-book-reader" style="color:#464255"></i>
+                <p class="text-gray-500">
+                  Siswa
+                </p>
+              </a>
+            </li>
+            <li class="nav-item py-2">
               <a href="{{ route('soal.index')}}" class="nav-link">
                 <i class="nav-icon fas fa-chalkboard-teacher" style="color:#464255"></i>
                 <p class="text-gray-500 ">

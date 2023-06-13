@@ -28,6 +28,9 @@
                 <th scope="col" class="px-6 py-3">
                     Nama Siswa
                 </th>
+                <th scope="col" class="px-6 py-3 text-center text-bold">
+                    Sesi
+                </th>
                 <th scope="col" class="px-6 py-3 text-center">
                     Nilai
                 </th>
@@ -49,11 +52,14 @@
                 <td class="px-6 py-2">
                     {{ $Nilai->siswa->nama}}
                 </td>
+                <td class="px-6 py-2">
+                    {{ $Nilai->kategori->nama}}
+                </td>
                 <td class="px-6 py-2 text-center">
                     {{ $Nilai->nilai}}
                 </td>
                 <td class="px-6 py-2 text-center">
-                    {{ $Nilai->created_at}}
+                    {{ date('d F Y, h:i A', strtotime($Nilai->waktu_pengerjaan)) }}
                 </td>
                 <td class="px-6 py-2 text-center">
                     <form action="{{ route('nilai.destroy',$Nilai->id) }}" method="POST">

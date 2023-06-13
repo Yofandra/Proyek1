@@ -16,10 +16,9 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $admin = Admin::first();
         $kelas = Kelas::all();
         $posts = Kelas::orderBy('id', 'asc');
-        return view('admin.kelas.index_Kelas', compact('kelas','admin'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('admin.kelas.index_Kelas', compact('kelas'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
