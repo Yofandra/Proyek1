@@ -83,7 +83,7 @@ class SoalController extends Controller
             $soal->kategori()->associate($kategori);
             $soal->save();
 
-            return redirect()->route('soal.index')
+            return redirect()->route('soal.create')
                 ->with('success', 'Data Berhasil Ditambahkan');
         } else {
             return redirect()->back()->with('error', 'Aksi tidak valid');
@@ -112,7 +112,8 @@ class SoalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Soal = Soal::find($id);
+        return view('guru.kuis.edit', compact('Soal'));
     }
 
     /**
@@ -124,7 +125,31 @@ class SoalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $request->validate([
+                'soal' => 'required',
+                'opsi_a' => 'required',
+                'opsi_b' => 'required',
+                'opsi_c' => 'required',
+                'opsi_d' => 'required',
+                'opsi_benar' => 'required',
+            ]);
+
+            $soal = Soal::where('id', $id)->first();
+            $soal->soal = $request->get('soal');
+            $soal->opsi_a = $request->get('opsi_a');
+            $soal->opsi_b = $request->get('opsi_b');
+            $soal->opsi_c = $request->get('opsi_c');
+            $soal->opsi_d = $request->get('opsi_d');
+            $soal->opsi_benar = $request->get('opsi_benar');
+            $kategori = new Kategori;
+            $kategori->id = $request->get('kategori_id');
+
+            $soal->kategori()->associate($kategori);
+            $soal->save();
+
+            return redirect()->route('soal.index')
+                ->with('success', 'Soal Berhasil Diubah');
     }
 
     /**

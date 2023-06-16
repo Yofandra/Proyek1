@@ -51,7 +51,7 @@ class NilaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($nip)
+    public function show($nip, Request $request)
     {
         $guru = Guru::find($nip);
 
@@ -61,15 +61,21 @@ class NilaiController extends Controller
         // Mengambil siswa yang terdaftar dalam kelas
         $siswa = Siswa::whereIn('kelas_idKelas', $kelas->pluck('idKelas'))->get();
 
-        // // Mengambil nilai siswa berdasarkan siswa yang terdaftar
+        // Filter siswa berdasarkan pencarian berdasarkan nama
+        if ($request->has('search')) {
+            $siswa = Siswa::whereIn('kelas_idKelas', $kelas->pluck('idKelas'))
+            ->where('nama', 'LIKE', '%' . $request->input('search') . '%')
+            ->get();
+        }
+        
+        // Mengambil nilai siswa berdasarkan siswa yang terdaftar
         $nilai = Nilai::whereIn('siswa_nis', $siswa->pluck('nis'))
-        ->orderBy('kategori_id')
-        ->orderBy('waktu_pengerjaan', 'desc')
-        ->get();
-        // $kategori = Kategori::where('guru_nip', $nip)->get();
+            ->orderBy('kategori_id')
+            ->orderBy('waktu_pengerjaan', 'desc')
+            ->get();
+        $kategori = Kategori::where('guru_nip', $nip)->get();
 
-        return view('guru.nilai.index', ['guru' => $guru, 'nilai' => $nilai]);
-    
+        return view('guru.nilai.index', ['guru' => $guru, 'nilai' => $nilai, 'kategori'=>$kategori]);
     }
 
     /**
@@ -104,10 +110,11 @@ class NilaiController extends Controller
     public function destroy($id)
     {
         Nilai::find($id)->delete();
-        return redirect()->route('nilai.index') -> with('success', 'Data Nilai Berhasil Dihapus');
+        return redirect()->route('nilai.show')->with('success', 'Data Nilai Berhasil Dihapus');
     }
-    public function cetak_pdf(){
-         $nip = Auth::user()->nip;
+    public function cetak_pdf()
+    {
+        $nip = Auth::user()->nip;
         $guru = Guru::find($nip);
 
         // Mengambil kelas yang diajar oleh guru
@@ -116,10 +123,17 @@ class NilaiController extends Controller
         // Mengambil siswa yang terdaftar dalam kelas
         $siswa = Siswa::whereIn('kelas_idKelas', $kelas->pluck('idKelas'))->get();
         $nilai = Nilai::whereIn('siswa_nis', $siswa->pluck('nis'))
-        ->orderBy('kategori_id')
-        ->orderBy('waktu_pengerjaan', 'desc')
-        ->get();
-        $pdf = PDF::loadview('guru.nilai.cetak_pdf', ['nilai'=>$nilai]);
+            ->orderBy('kategori_id')
+            ->orderBy('waktu_pengerjaan', 'desc')
+            ->get();
+        $pdf = PDF::loadview('guru.nilai.cetak_pdf', ['nilai' => $nilai]);
         return $pdf->stream();
+    }
+
+    public function resetData($kategori_id)
+    {
+        Nilai::where('kategori_id', $kategori_id)->delete();
+
+        return redirect()->back()->with('success', 'Data berhasil direset.');
     }
 }

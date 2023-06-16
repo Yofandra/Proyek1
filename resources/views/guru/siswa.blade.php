@@ -1,9 +1,23 @@
 @extends('guru.layout')
 @section('content')
-<div class="row">
+    <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="mt-2 px-6 py-2 text-center">
-                <h2>DATA SISWA</h2>
+            <div class="pull-left mt-2 px-6 py-2 flex">
+                <div class="col-lg-10">
+                    <h2>INFORMASI SISWA</h2>
+                </div>
+                
+                <div class="float-right col-lg-2">
+                    <form action="{{ route('tampilSiswa') }}" method="GET">
+                        <select name="kelas" id="kelas" class="form-control">
+                            <option value="">Semua Kelas</option>
+                            @foreach ($kelas as $idKelas => $nama_kelas)
+                                <option value="{{ $idKelas }}">{{ $nama_kelas }}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="btn btn-primary float-right">Filter</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -26,20 +40,22 @@
 
             </tr>
         </thead>
+
+        <tbody>
         @foreach ($siswa as $Siswa)
         <tbody>
             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                <th scope="row" class="p-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <td class="p-2 w-20">
                     {{ $Siswa->nis}}
-                </th>
-                <td class="p-2">
+                </td>
+                <td class="p-2 w-20">
                     <img width="60px" height="60px" src="{{asset('storage/'.$Siswa->foto)}}">
                 </td>
-                <td class="p-2">
+                <td class="p-2 w-40">
                     {{ $Siswa->nama}}
                 </td>
                 
-                <td class="p-2">
+                <td class="p-2 w-20">
                     {{ $Siswa->kelas->nama_kelas}}
                 </td>
             </tr>
