@@ -86,7 +86,8 @@ class KuisController extends Controller
     public function show($id)
     {
         $soal = Soal::where('kategori_id', $id)->get();
-        return view('siswa.kuis.kuis', compact('soal'));
+        $kategori = Kategori::find($id);
+        return view('siswa.kuis.kuis', compact('soal','kategori'));
     }
 
     /**

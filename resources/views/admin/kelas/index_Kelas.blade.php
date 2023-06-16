@@ -50,7 +50,7 @@
                     {{ $Kelas->guru->nama_guru}}
                 </td>
                 <td class="px-6 py-2 text-center">
-                    <form action="{{ route('data-kelas.destroy',$Kelas->idKelas) }}" method="POST">
+                    <form action="{{ route('data-kelas.destroy',$Kelas->idKelas) }}" method="POST" onsubmit="return confirm('Apakah anda yakin untuk menghapus kelas {{$Kelas->nama_kelas}}?')">
                         <a class="text-black" href="{{ route('data-kelas.edit',$Kelas->idKelas) }}"><i class='fas fa-pencil-alt mr-4' style='font-size:24px'></i></a>
                         @csrf
                         @method('DELETE')

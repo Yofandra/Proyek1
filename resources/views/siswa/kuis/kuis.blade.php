@@ -28,7 +28,7 @@
         <div class="content-wrapper bg-white">
             <div class="container-fluid">
                 <div class="flex flex-col items-center pb-10">
-                    <h1 class="mb-1 font-bold text-black py-3 ">KUIS</h1>
+                    <h1 class="mb-1 font-bold text-black py-3 ">{{$kategori->nama}}</h1>
                     <div class="w-3/5 py-3 px-8 bg-white border border-gray-400 rounded-lg shadow-2xl">
                         <div class="input-body">
                             @if ($errors->any())
@@ -77,7 +77,7 @@
                                     </div>
                                 @endforeach
                                 <input type="hidden" value="{{ Auth::user()->nis }}" name="siswa_nis" id="siswa_nis">
-                                <input type="hidden" value="{{$Soal->kategori->id}}" name="kategori_id" id="kategori_id">
+                                <input type="hidden" value="{{$kategori->id}}" name="kategori_id" id="kategori_id">
                                 <div class="flex space-x-2 float-right">
                                     <button type="submit" class="bg-blue-400 border shadow p-2 rounded text-white text-semibold flex items-center focus:outline-none focus:shadow-outline hover:bg-blue-900">
                                         <span class="mx-2">Submit</span>

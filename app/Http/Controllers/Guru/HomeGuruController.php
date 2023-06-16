@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Guru;
 
 use App\Models\Guru;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,13 @@ class HomeGuruController extends Controller
         foreach ($guru->kelas as $kelas) {
             $siswa = $siswa->merge($kelas->siswa);
         }
+        $kelas = Kelas::pluck('nama_kelas', 'idKelas'); // Mengambil daftar kelas untuk digunakan sebagai opsi filter
+        // Tambahkan logika filter kelas
+        $kelasFilter = request()->get('kelas');
+        if ($kelasFilter) {
+            $siswa = $siswa->where('kelas_idKelas', $kelasFilter);
+        }
 
-        return view('guru.siswa', compact('siswa'));
+        return view('guru.siswa', compact('siswa','kelas'));
     }
 }

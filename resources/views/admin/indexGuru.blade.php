@@ -61,7 +61,7 @@
                     {{ $Guru->password}}
                 </td>
                 <td class="px-6 py-4">
-                    <form action="{{ route('data-guru.destroy',$Guru->nip) }}" method="POST">
+                    <form action="{{ route('data-guru.destroy',$Guru->nip) }}" method="POST" onsubmit="return confirm('Apakah anda yakin untuk menghapus data {{$Guru->nama_guru}}?')">
 
                         <a class="text-black" href="{{ route('data-guru.show',$Guru->nip) }}"><i class='fas fa-file-alt mr-4' style='font-size:24px'></i></a>
                         <a class="text-black" href="{{ route('data-guru.edit',$Guru->nip) }}"><i class='fas fa-pencil-alt mr-4' style='font-size:24px'></i></a>
