@@ -74,6 +74,9 @@
         </tbody>
         @endforeach
     </table>
+    <div class="d-flex">
+        {{ $guru->links()}}
+    </div>
 </div>
 
 @endsection
