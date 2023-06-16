@@ -13,9 +13,10 @@ class GuruController extends Controller
 
     public function index()
     {
-        $guru = Guru::all();
-        $posts = Guru::orderBy('nip', 'desc')->paginate(6);
+   
+        $guru = Guru::orderBy('nip', 'desc')->paginate(3);
         return view('admin.indexGuru', compact('guru'))->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
     public function create()
