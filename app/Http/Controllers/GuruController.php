@@ -26,13 +26,13 @@ class GuruController extends Controller
 
     public function store(Request $request)
     {
-        if($request->file('image')){
-            $image_name = $request->file('image')->store('image', 'public');
+        if($request->file('foto')){
+            $image_name = $request->file('foto')->store('image', 'public');
         }
         $request->validate([
             'nip' => 'required',
             'nama_guru' => 'required',
-            'image' => 'required',
+            'foto' => 'required',
             'username' => 'required',
             'password' => 'required',
             ]);
@@ -66,7 +66,7 @@ class GuruController extends Controller
         $request->validate([
             'nip' => 'required',
             'nama_guru' => 'required',
-            'image' => 'required',
+            'foto' => 'nullable',
             'username' => 'required',
             'password' => 'required',
             ]);
@@ -74,11 +74,13 @@ class GuruController extends Controller
             $guru = Guru::where('nip', $nip)->first();
             $guru->nip = $request->get('nip');
             $guru->nama_guru = $request->get('nama_guru');
-            if($guru->foto && file_exists(storage_path('app/public/' . $guru->foto))) {
-                Storage::delete('public/' . $guru->foto);
+            if($request->hasFile('foto')){
+                if($guru->foto && file_exists(storage_path('app/public/' . $guru->foto))) {
+                    Storage::delete('public/' . $guru->foto);
+                }
+                $image_name = $request->file('foto')->store('image', 'public');
+                $guru->foto = $image_name;
             }
-            $image_name = $request->file('image')->store('image', 'public');
-            $guru->foto = $image_name;
             $guru->username = $request->get('username');
             $guru->password = Hash::make($request->get('password'));
             $guru->save();

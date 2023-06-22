@@ -127,7 +127,7 @@ class SiswaController extends Controller
             'nis' => 'required',
             'username' => 'required',
             'password' => 'required',
-            'foto'=>'required',
+            'foto'=>'nullable',
             'nama' => 'required',
             'kelas' => 'required',
             'no_absen' => 'required',
@@ -136,12 +136,13 @@ class SiswaController extends Controller
             $siswa = Siswa::where('nis', $nis)->first();
             $siswa->nis = $request->get('nis');
             $siswa->nama = $request->get('nama');
-            
-            if($siswa->foto && file_exists(storage_path('app/public/' . $siswa->foto))) {
-                Storage::delete('public/' . $siswa->foto);
+            if($request->hasFile('foto')){
+                if($siswa->foto && file_exists(storage_path('app/public/' . $siswa->foto))) {
+                    Storage::delete('public/' . $siswa->foto);
+                }
+                $image_name = $request->file('foto')->store('image', 'public');
+                $siswa->foto = $image_name;
             }
-            $image_name = $request->file('foto')->store('image', 'public');
-            $siswa->foto = $image_name;
             $siswa->username = $request->get('username');
             $siswa->password = Hash::make($request->get('password'));
             $siswa->save();
