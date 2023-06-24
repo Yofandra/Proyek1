@@ -41,7 +41,7 @@
                                 </ul>
                             </div>
                             @endif
-                            <form method="post" action="{{ route('kuis.store',['nis' => Auth::user()->nis])}}" id="myForm">
+                            <form method="post" action="{{ route('kuis.store',['nis' => Auth::user()->nis])}}" id="myForm" onsubmit="return confirm('Apakah anda sudah yakin dengan jawaban anda? Pastikan semua soal sudah terjawab!')">
                                 @csrf
                                 @foreach ($soal as $Soal)
                                     <div class=" mt-4 mb-2 rounded-lg border-b border-gray-300">

@@ -99,8 +99,9 @@ class SoalController extends Controller
      */
     public function show($id)
     {
+        $kategori = Kategori::find($id);
         $soal = Soal::where('kategori_id', $id)->get();
-        return view('guru.kuis.list_soal', compact('soal'));
+        return view('guru.kuis.list_soal', compact('soal','kategori'));
 
     }
 
@@ -142,10 +143,6 @@ class SoalController extends Controller
             $soal->opsi_c = $request->get('opsi_c');
             $soal->opsi_d = $request->get('opsi_d');
             $soal->opsi_benar = $request->get('opsi_benar');
-            $kategori = new Kategori;
-            $kategori->id = $request->get('kategori_id');
-
-            $soal->kategori()->associate($kategori);
             $soal->save();
 
             return redirect()->route('soal.index')
@@ -183,5 +180,13 @@ class SoalController extends Controller
         $kategori->save();
         return redirect()->route('soal.create')
             ->with('success', 'Kategori Berhasil ditambahkan, silahkan pilih pada list');
+    }
+
+    public function hapusSoal(Request $request)
+    {
+        $id = $request->get('kategori_id');
+        Soal::where('kategori_id', $id)->delete();
+
+        return redirect()->back()->with('success', 'Soal direset.');
     }
 }

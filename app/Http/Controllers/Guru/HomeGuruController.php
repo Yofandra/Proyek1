@@ -31,7 +31,7 @@ class HomeGuruController extends Controller
         foreach ($guru->kelas as $kelas) {
             $siswa = $siswa->merge($kelas->siswa);
         }
-        $kelas = Kelas::pluck('nama_kelas', 'idKelas'); // Mengambil daftar kelas untuk digunakan sebagai opsi filter
+        $kelas = $guru->kelas->pluck('nama_kelas', 'idKelas'); // Mengambil daftar kelas untuk digunakan sebagai opsi filter
         // Tambahkan logika filter kelas
         $kelasFilter = request()->get('kelas');
         if ($kelasFilter) {
