@@ -1,15 +1,13 @@
 <?php
 namespace App\Models;
 use App\Models\Kelas;
-use App\Models\Kategori;
-use Illuminate\Database\Eloquent\Model; 
+use App\Models\Kategori; 
+use Illuminate\Foundation\Auth\User as Model;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\Siswa as Authenticatable;
 
 class Siswa extends Model       
 {
+    use Notifiable;
     protected $table="siswa"; 
     public $timestamps= false;
     protected $primaryKey = 'nis';

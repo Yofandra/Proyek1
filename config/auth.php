@@ -87,12 +87,12 @@ return [
 
         'gurus' => [
             'driver' => 'eloquent',
-            'model' => App\Models\GuruLogin::class,
+            'model' => App\Models\Guru::class,
         ],
 
         'siswas' => [
             'driver' => 'eloquent',
-            'model' => App\Models\SiswaLogin::class,
+            'model' => App\Models\Siswa::class,
         ],
 
         // 'users' => [
