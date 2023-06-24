@@ -75,7 +75,7 @@ class NilaiController extends Controller
             ->get();
         $kategori = Kategori::where('guru_nip', $nip)->get();
 
-        return view('guru.nilai.index', ['guru' => $guru, 'nilai' => $nilai, 'kategori'=>$kategori]);
+        return view('guru.nilai.index', ['guru' => $guru, 'nilai' => $nilai, 'kategori'=>$kategori, 'kelas'=>$kelas]);
     }
 
     /**
@@ -109,16 +109,25 @@ class NilaiController extends Controller
      */
     public function destroy($id)
     {
+        $nip = Auth::user()->nip;
         Nilai::find($id)->delete();
-        return redirect()->route('nilai.show')->with('success', 'Data Nilai Berhasil Dihapus');
+        return redirect()->route('nilai.show', ['nilai' => $nip])->with('success', 'Data Nilai Berhasil Dihapus');
     }
-    public function cetak_pdf()
+
+    public function cetak_pdf(Request $request)
     {
         $nip = Auth::user()->nip;
         $guru = Guru::find($nip);
 
         // Mengambil kelas yang diajar oleh guru
         $kelas = $guru->kelas;
+
+        // Filter berdasarkan kelas
+        $kelasFilter = $request->get('kelas');
+
+        if ($kelasFilter) {
+            $kelas = $kelas->where('idKelas', $kelasFilter);
+        }
 
         // Mengambil siswa yang terdaftar dalam kelas
         $siswa = Siswa::whereIn('kelas_idKelas', $kelas->pluck('idKelas'))->get();
@@ -130,9 +139,10 @@ class NilaiController extends Controller
         return $pdf->stream();
     }
 
-    public function resetData($kategori_id)
+    public function resetData(Request $request)
     {
-        Nilai::where('kategori_id', $kategori_id)->delete();
+        $id = $request->get('kategori_id');
+        Nilai::where('kategori_id', $id)->delete();
 
         return redirect()->back()->with('success', 'Data berhasil direset.');
     }

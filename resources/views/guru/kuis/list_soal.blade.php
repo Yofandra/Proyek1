@@ -5,7 +5,16 @@
             <div class="pull-left mt-2 px-6 py-2">
                 <h2>INFORMASI SOAL</h2>
                 <div class="fixed top-20 right-2">
-                <a class="text-white text-semibold bg-blue-500 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" href="{{ route('soal.create') }}" >Tambah Soal</a>
+                    <form action="{{ route('soal.hapusSoal') }}" method="POST"
+                            onsubmit="return confirm('Apakah anda yakin untuk menghapus semua Semua pada kategori ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <a class="text-white bg-green-600 hover:bg-green-700 focus:ring-2 font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2" href="javascript:history.back()">Kembali</a>
+                            <a class="text-white text-semibold bg-blue-500 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" href="{{ route('soal.create') }}" >Tambah Soal</a>
+                            <input type="hidden" name="kategori_id" id="kategori_id" value="{{$kategori->id}}">
+                            <button type="submit"
+                                class="text-white text-semibold bg-red-500 hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2">Reset Soal</button>
+                        </form>
             </div>
             </div>
         </div>
@@ -56,7 +65,6 @@
                         @csrf
                         @method('DELETE')
                         <div class="float-right">
-                            <a class="text-white bg-green-600 hover:bg-green-700 focus:ring-2 font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2" href="javascript:history.back()">Kembali</a>
                             <a class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2" href="{{ route('soal.edit',$Soal->id) }}">Edit</a>
                             <button type="submit" class="text-white bg-red-600 hover:bg-red-700 focus:ring-2 font-medium rounded-lg text-sm px-3 py-2.5 mr-2 mb-2">Hapus Soal</button>    
                         </div>

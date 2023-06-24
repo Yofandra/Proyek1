@@ -63,9 +63,10 @@ Route::group(['prefix' => 'guru'], function () {
     Route::get('/', [HomeGuruController::class, 'index'])->name('guru.dashboard')->middleware('auth:guru');
     Route::get('/data-siswa', [HomeGuruController::class, 'tampilSiswa'])->name('tampilSiswa')->middleware('auth:guru');
     Route::get('/kategori', [SoalController::class, 'createKategori'])->name('soal.createKategori')->middleware('auth:guru');
+    Route::delete('hapus-soal/', [SoalController::class, 'hapusSoal'])->name('soal.hapusSoal');
     Route::resource('/soal', SoalController::class)->middleware('auth:guru');
     Route::get('nilai/cetak', [NilaiController::class, 'cetak_pdf'])->name('nilai.cetak_pdf')->middleware('auth:guru');
-    Route::delete('reset/{kategori_id}', [NilaiController::class, 'resetData'])->name('nilai.resetData');
+    Route::delete('reset/', [NilaiController::class, 'resetData'])->name('nilai.resetData');
     Route::resource('/nilai', NilaiController::class)->middleware('auth:guru');
 });
 

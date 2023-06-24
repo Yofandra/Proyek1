@@ -17,8 +17,11 @@
                 </form>
             </div>
             <div class="fixed top-20 right-2">
-                <a class="text-white text-semibold bg-[#00B074] hover:bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
-                    href="{{ route('nilai.cetak_pdf') }}">Cetak Laporan</a>
+                <button type="button"
+                    class="text-white text-semibold bg-green hover:bg-red-500 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2"
+                    data-toggle="modal" data-target="#cetak-pdf">
+                    {{ __('Cetak Laporan') }}
+                </button>
                 <button type="button"
                     class="text-white text-semibold bg-red hover:bg-red-500 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2"
                     data-toggle="modal" data-target="#reset">
@@ -92,7 +95,38 @@
             @endforeach
         </table>
     </div>
-    <!-- Modal -->
+    <!-- Modal Cetak PDF-->
+    <div class="modal fade" id="cetak-pdf" tabindex="-1" role="dialog" aria-labelledby="cetakLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cetakLabel">Pilih Kelas yang ingin di cetak</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <label>Kelas</label>
+                    <div class="form-group">
+                        <form action="{{ route('nilai.cetak_pdf') }}" method="GET">
+                            <select name="kelas" id="kelas" class="form-control">
+                                <option value="">Semua Kelas</option>
+                                @foreach ($kelas as $Kelas)
+                                    <option value="{{ $Kelas->idKelas }}">{{ $Kelas->nama_kelas }}</option>
+                                @endforeach
+                            </select>
+                            <div><i>Silahkan Pilih Kelas yang Laporan nilainya ingin anda cetak</i></div>
+                            <button type="submit" class="btn btn-primary float-right">Cetak</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Reset Nilai-->
     <div class="modal fade" id="reset" tabindex="-1" role="dialog" aria-labelledby="resetLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -102,29 +136,26 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body">
                     <label>Kategori</label>
                     <div class="form-group">
-                        <select class="form-control" name="program_id" id="program">
-                            {{-- <option value="{{ $grade->Program->id }} selected " >{{ $grade->Program->name }}</option> --}}
-                            @foreach ($kategori as $Kategori)
-                                <option value="{{ $Kategori->id }} ">{{ $Kategori->nama }}</option>
-                            @endforeach
-
-                        </select>
+                        <form action="{{ route('nilai.resetData') }}" method="POST"
+                            onsubmit="return confirm('Apakah anda yakin untuk menghapus semua nilai siswa pada kategori tersebut?')">
+                            @csrf
+                            @method('DELETE')
+                            <select class="form-control" name="kategori_id" id="kategori_id">
+                                @foreach ($kategori as $Kategori)
+                                    <option value="{{ $Kategori->id }} ">{{ $Kategori->nama }}</option>
+                                @endforeach
+                            </select>
+                            <div><i>Sebelum menghapus pastikan kategori yang anda pilih benar, Data yang sudah
+                                    direset tidak
+                                    bisa dikembalikan!</i></div>
+                            <button type="submit"
+                                class="text-white float-right text-semibold bg-red hover:bg-red-500 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2">Hapus</button>
+                        </form>
                     </div>
-
-                </div>
-                <div class="modal-footer">
-                    <form action="{{ route('nilai.resetData', $Kategori->id) }}" method="POST"
-                        onsubmit="return confirm('Apakah anda yakin untuk menghapus semua nilai siswa pada kategori {{ $Kategori->nama }}?')">
-                        @csrf
-                        @method('DELETE')
-                        <div><i>Sebelum menghapus pastikan kategori yang anda pilih benar, Data yang sudah direset tidak
-                                bisa dikembalikan!</i></div>
-                        <button type="submit"
-                            class="text-white float-right text-semibold bg-red hover:bg-red-500 font-medium rounded-lg text-sm px-2 py-2.5 mr-2 mb-2">Hapus</button>
-                    </form>
                 </div>
             </div>
         </div>
