@@ -28,7 +28,7 @@
 
     @foreach($soal as $Soal)
     <div class="relative overflow-x-auto">
-        <fieldset class="space-y-4 bg-white p-2 m-4">
+        <fieldset class="space-y-1 bg-white p-2 m-4">
             
                     <div class="flex text-semibold items-center justify-center py-2 border-b border-gray-300">
                         <h5>{{$Soal->soal}}</h5>
@@ -61,6 +61,14 @@
                         {{$Soal->opsi_d}}
                         </label>
                     </div>
+
+                    <div class="flex items-center mb-2">
+                        <input id="opsi_d" type="radio" name="jawab" value="opsi_d" class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300" aria-labelledby="opsi_d" aria-describedby="opsi_d">
+                        <label for="opsi_d" class="text-sm font-medium text-gray-900 ml-2 block">
+                        Jawaban: Opsi No.{{$Soal->opsi_benar}}
+                        </label>
+                    </div>
+
                     <form action="{{ route('soal.destroy',$Soal->id) }}" method="POST" onsubmit="return confirm('Apakah anda yakin?')">
                         @csrf
                         @method('DELETE')

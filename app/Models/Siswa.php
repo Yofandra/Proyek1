@@ -19,7 +19,6 @@ class Siswa extends Model
         'foto',
         'nama',
         'kelas_id',
-        'nis',
         'no_absen',
     ];
 

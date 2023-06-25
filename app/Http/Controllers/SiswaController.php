@@ -145,6 +145,7 @@ class SiswaController extends Controller
             }
             $siswa->username = $request->get('username');
             $siswa->password = Hash::make($request->get('password'));
+            $siswa->no_absen = $request->get('no_absen');
             $siswa->save();
 
             $kelas = new Kelas;
