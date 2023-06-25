@@ -14,9 +14,7 @@ class HomeGuruController extends Controller
     public function index(){
         $nipGuru = Auth::user()->nip; // NIP guru yang sedang login
 
-        $guru = Guru::with('kelas')->where('nip', $nipGuru)->first();
-
-        $kelas = $guru->kelas;
+        $kelas = Kelas::where('guru_nip', $nipGuru)->get();
 
         return view('guru.index', compact('kelas'));
         // return view('guru.index');
@@ -31,7 +29,7 @@ class HomeGuruController extends Controller
         foreach ($guru->kelas as $kelas) {
             $siswa = $siswa->merge($kelas->siswa);
         }
-        $kelas = $guru->kelas->pluck('nama_kelas', 'idKelas'); // Mengambil daftar kelas untuk digunakan sebagai opsi filter
+        $kelas = Kelas::where('guru_nip', $nipGuru)->get();// Mengambil daftar kelas untuk digunakan sebagai opsi filter
         // Tambahkan logika filter kelas
         $kelasFilter = request()->get('kelas');
         if ($kelasFilter) {

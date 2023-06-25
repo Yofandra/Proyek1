@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guru;
 
 use PDF;
 use App\Models\Guru;
+use App\Models\Kelas;
 use App\Models\Nilai;
 use App\Models\Siswa;
 use App\Models\Kategori;
@@ -53,10 +54,9 @@ class NilaiController extends Controller
      */
     public function show($nip, Request $request)
     {
-        $guru = Guru::find($nip);
+        $nipGuru = Auth::user()->nip; // NIP guru yang sedang login
 
-        // Mengambil kelas yang diajar oleh guru
-        $kelas = $guru->kelas;
+        $kelas = Kelas::where('guru_nip', $nipGuru)->get();
 
         // Mengambil siswa yang terdaftar dalam kelas
         $siswa = Siswa::whereIn('kelas_idKelas', $kelas->pluck('idKelas'))->get();
@@ -73,9 +73,10 @@ class NilaiController extends Controller
             ->orderBy('kategori_id')
             ->orderBy('waktu_pengerjaan', 'desc')
             ->get();
+
         $kategori = Kategori::where('guru_nip', $nip)->get();
 
-        return view('guru.nilai.index', ['guru' => $guru, 'nilai' => $nilai, 'kategori'=>$kategori, 'kelas'=>$kelas]);
+        return view('guru.nilai.index', ['nilai' => $nilai, 'kategori'=>$kategori, 'kelas'=>$kelas]);
     }
 
     /**
@@ -117,10 +118,9 @@ class NilaiController extends Controller
     public function cetak_pdf(Request $request)
     {
         $nip = Auth::user()->nip;
-        $guru = Guru::find($nip);
 
         // Mengambil kelas yang diajar oleh guru
-        $kelas = $guru->kelas;
+        $kelas = Kelas::where('guru_nip', $nip)->get();
 
         // Filter berdasarkan kelas
         $kelasFilter = $request->get('kelas');
@@ -131,10 +131,12 @@ class NilaiController extends Controller
 
         // Mengambil siswa yang terdaftar dalam kelas
         $siswa = Siswa::whereIn('kelas_idKelas', $kelas->pluck('idKelas'))->get();
+
         $nilai = Nilai::whereIn('siswa_nis', $siswa->pluck('nis'))
             ->orderBy('kategori_id')
             ->orderBy('waktu_pengerjaan', 'desc')
             ->get();
+            
         $pdf = PDF::loadview('guru.nilai.cetak_pdf', ['nilai' => $nilai]);
         return $pdf->stream();
     }
