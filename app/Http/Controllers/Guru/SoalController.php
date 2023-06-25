@@ -43,23 +43,6 @@ class SoalController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->input('action') === 'kategori') {
-            $request->validate([
-            'nama' => 'required',
-            
-            ]);
-            $kategori = new Kategori;
-            $kategori->nama = $request->get('nama');
-            
-            $guru = new Guru;
-            $guru->nip = $request->get('guru_nip');
-
-            $kategori->guru()->associate($guru);
-            $kategori->save();
-            return redirect()->route('soal.create')
-                ->with('success', 'Kategori Berhasil ditambahkan, silahkan pilih pada list');
-                
-        } elseif ($request->input('action') === 'soal') {
             $request->validate([
                 'soal' => 'required',
                 'opsi_a' => 'required',
@@ -85,9 +68,6 @@ class SoalController extends Controller
 
             return redirect()->route('soal.create')
                 ->with('success', 'Data Berhasil Ditambahkan');
-        } else {
-            return redirect()->back()->with('error', 'Aksi tidak valid');
-        }
 
     }
 
@@ -168,18 +148,18 @@ class SoalController extends Controller
     public function storeKategori(Request $request){
         $request->validate([
             'nama' => 'required',
-            
+
         ]);
         $kategori = new Kategori;
         $kategori->nama = $request->get('nama');
-        
+
         $guru = new Guru;
         $guru->nip = $request->get('guru_nip');
 
         $kategori->guru()->associate($guru);
         $kategori->save();
         return redirect()->route('soal.create')
-            ->with('success', 'Kategori Berhasil ditambahkan, silahkan pilih pada list');
+        ->with('success', 'Kategori Berhasil ditambahkan, silahkan pilih pada list');
     }
 
     public function hapusSoal(Request $request)

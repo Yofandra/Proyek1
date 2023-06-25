@@ -60,7 +60,6 @@
                     
                     
                     <div class="flex space-x-2 float-right">
-                        <input type="hidden" name="action" value="soal">
                         <button type="submit" class="bg-blue-400 border shadow p-2 rounded text-white text-semibold flex items-center focus:outline-none focus:shadow-outline hover:bg-blue-900">
                             <span class="mx-2">Submit</span>
                         </button>
