@@ -52,7 +52,7 @@
                     {{ $Guru->nama_guru}}
                 </td>
                 <td class="px-6 py-4">
-                <img width="100px" height="100px" src="{{asset('storage/'.$Guru->foto)}}">
+                <img width="60px" src="{{asset('storage/'.$Guru->foto)}}">
                 </td>
                 <td class="px-6 py-4">
                     {{ $Guru->username}}

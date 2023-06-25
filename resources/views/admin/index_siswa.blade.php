@@ -70,7 +70,7 @@
                                 {{ $Siswa->nama }}
                             </td>
                             <td class="px-6 py-4">
-                                <img width="100px" src="{{ asset('storage/' . $Siswa->foto) }}">
+                                <img width="60px" src="{{ asset('storage/' . $Siswa->foto) }}">
                             </td>
                             <td class="px-6 py-4">
                                 {{ $Siswa->username }}
