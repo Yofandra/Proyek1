@@ -15,7 +15,7 @@
                     </ul>
                 </div>
                 @endif
-                <form method="post" action="{{ route('soal.store') }}" id="myForm">
+                <form method="post" action="{{ route('soal.storeKategori') }}" id="myForm">
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama Kategori Kuis</label>
@@ -23,7 +23,6 @@
                     </div>
                     <input type="hidden" value="{{ Auth::user()->nip }}" name="guru_nip" id="guru_nip">                    
                     <div class="flex space-x-2 float-right">
-                        <input type="hidden" name="action" value="kategori">
                         <button type="submit" class="bg-blue-400 border shadow p-2 rounded text-white text-semibold flex items-center focus:outline-none focus:shadow-outline hover:bg-blue-900">
                             <span class="mx-2">Submit</span>
                         </button>

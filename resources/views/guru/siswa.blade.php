@@ -11,8 +11,8 @@
                     <form action="{{ route('tampilSiswa') }}" method="GET">
                         <select name="kelas" id="kelas" class="form-control">
                             <option value="">Semua Kelas</option>
-                            @foreach ($kelas as $idKelas => $nama_kelas)
-                                <option value="{{ $idKelas }}">{{ $nama_kelas }}</option>
+                            @foreach ($kelas as $Kelas)
+                                <option value="{{ $Kelas->idKelas }}">{{ $Kelas->nama_kelas }}</option>
                             @endforeach
                         </select>
                         <button type="submit" class="btn btn-primary float-right">Filter</button>
